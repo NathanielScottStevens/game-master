@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 
 
-import { Characters } from '../api/characters.js';
+import { Characters } from '../api/characters/characters.js';
 
 import Character from './Character.jsx';
 

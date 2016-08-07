@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Navigation from './Navigation.jsx';
+import Navigation from '../components/Navigation.jsx';
 
 export const App = ({ children }) => (
   <div>
