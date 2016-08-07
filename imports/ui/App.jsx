@@ -1,43 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDom from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, { Component } from 'react';
 
-import { Characters } from '../api/characters.js';
+import Navigation from './Navigation.jsx';
 
-import Character from './Character.jsx';
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  renderCharacters() {
-    let characters = this.props.characters;
-    return characters.map(character =>
-      <Character key={character._id} character={character} />
-    );
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <header>
-          <h1>Game Master</h1>
-        </header>
-        <div>
-        {this.renderCharacters()}
-        </div>
-      </div>
-    );
-  }
-}
-
-App.propTypes = {
-  characters: PropTypes.array.isRequired,
-}
-
-export default createContainer(() => {
-  return {
-    characters: Characters.find({}).fetch(),
-  };
-}, App);
+export const App = ({ children }) => (
+  <div>
+    <header>
+      <h1>Game Master</h1>
+      <Navigation />
+    </header>
+    <main>
+      { children }
+    </main>
+  </div>
+)
