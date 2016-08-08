@@ -6,6 +6,7 @@ import { App } from '../../ui/pages/App.jsx';
 import Index from '../../ui/pages/Index.jsx';
 
 import CharacterList from '../../ui/pages/CharacterList.jsx';
+import Character from '../../ui/pages/Character.jsx';
 
 import NotFound from '../../ui/pages/NotFound.jsx';
 
@@ -15,6 +16,7 @@ Meteor.startup( () => {
       <Route path="/" component={ App }>
         <IndexRoute component={ Index } />
         <Route path="/characters" component={ CharacterList } />
+        <Route path="/characters/:id" component={ Character } />
       </Route>
       <Route path="*" component={ NotFound } />
     </Router>),

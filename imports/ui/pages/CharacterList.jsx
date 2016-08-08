@@ -3,9 +3,9 @@ import ReactDom from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 
 
-import { Characters } from '../api/characters/characters.js';
+import { Characters } from '../../api/characters/characters.js';
 
-import Character from './Character.jsx';
+import Character from '../components/Character.jsx';
 
 class CharacterList extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class CharacterList extends Component {
 
   renderCharacters() {
     let characters = this.props.characters;
+    debugger;
     return characters.map(character =>
       <Character key={character._id} character={character} />
     );
@@ -32,7 +33,7 @@ CharacterList.propTypes = {
   characters: PropTypes.array.isRequired,
 }
 
-export default createContainer(() => {
+export default CharacterListContainer = createContainer(() => {
   return {
     characters: Characters.find({}).fetch(),
   };
