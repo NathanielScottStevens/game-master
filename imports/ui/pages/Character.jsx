@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDom from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Mongo } from 'meteor/mongo';
 
 import { Characters } from '../../api/characters/characters.js';
 
@@ -12,8 +13,7 @@ class Character extends Component {
   }
 
   renderCharacter() {
-    let character = this.prop.character;
-    debugger;
+    let character = this.props.character;
     return (
       <p>{character.firstName} {character.lastName}</p>
     );
@@ -30,11 +30,13 @@ class Character extends Component {
 }
 
 Character.propTypes = {
-  character: PropTypes.object.isRequired,
+  character: PropTypes.object.isRequired
 }
 
 export default CharacterContainer = createContainer(({ params }) => {
+  const { id } = params;
+  const character = Characters.findOne(new Mongo.ObjectID(id));
   return {
-    character: Characters.findOne(params.id),
-  }
+    character
+  };
 }, Character);

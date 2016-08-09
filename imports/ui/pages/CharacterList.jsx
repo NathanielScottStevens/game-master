@@ -14,7 +14,6 @@ class CharacterList extends Component {
 
   renderCharacters() {
     let characters = this.props.characters;
-    debugger;
     return characters.map(character =>
       <Character key={character._id} character={character} />
     );
