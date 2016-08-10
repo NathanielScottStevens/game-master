@@ -35,7 +35,7 @@ Character.propTypes = {
 
 export default CharacterContainer = createContainer(({ params }) => {
   const { id } = params;
-  const character = Characters.findOne(new Mongo.ObjectID(id));
+  const character = Characters.findOne(id);
   return {
     character
   };
