@@ -14,6 +14,10 @@ class Character extends Component {
 
   renderCharacter() {
     let character = this.props.character;
+
+    if (character === undefined)
+      return;
+
     return (
       <p>{character.firstName} {character.lastName}</p>
     );
@@ -34,9 +38,11 @@ Character.propTypes = {
 }
 
 export default CharacterContainer = createContainer(({ params }) => {
-  const { id } = params;
-  const character = Characters.findOne(id);
+  var { id } = params;
+  Meteor.subscribe("characters", character);
+  var character = Characters.findOne(id);
+
   return {
-    character
+    character: character
   };
 }, Character);

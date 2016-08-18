@@ -33,6 +33,7 @@ CharacterList.propTypes = {
 }
 
 export default CharacterListContainer = createContainer(() => {
+  Meteor.subscribe('characters');
   return {
     characters: Characters.find({}).fetch(),
   };

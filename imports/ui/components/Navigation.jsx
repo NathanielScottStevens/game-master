@@ -8,6 +8,7 @@ export default class Navigation extends Component {
         <div className="nav navbar-nav">
           <IndexLink to="/" className="nav-item nav-link" activeClassName="active">Index</IndexLink>
           <Link to="/characters" className="nav-item nav-link" activeClassName="active">Characters</Link>
+          <Link to="/charactercreation" className="nav-item nav-link" activeClassName="active">Character Creation</Link>
         </div>
       </nav>
     );
