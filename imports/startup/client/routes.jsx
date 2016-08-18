@@ -18,7 +18,7 @@ Meteor.startup( () => {
         <IndexRoute component={ Index } />
         <Route path="/characters" component={ CharacterList } />
         <Route path="/characters/:id" component={ Character } />
-        <Route path="/charactercreation" componenet={ CharacterCreation } />
+        <Route path="/charactercreation" component={ CharacterCreation } />
       </Route>
       <Route path="*" component={ NotFound } />
     </Router>),

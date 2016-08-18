@@ -1,9 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDom from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Mongo } from 'meteor/mongo';
-
-import { Characters } from '../../api/characters/characters.js';
+import React, { Component } from 'react';
 
 export default class extends Component {
   createNewCharacter(event){

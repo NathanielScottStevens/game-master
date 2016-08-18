@@ -15,12 +15,11 @@ class Character extends Component {
   renderCharacter() {
     let character = this.props.character;
 
-    if (character === undefined)
-      return;
-
-    return (
-      <p>{character.firstName} {character.lastName}</p>
-    );
+    if (character){
+      return (
+        <p>{character.firstName} {character.lastName}</p>
+      );
+   }
   }
 
   render() {
@@ -34,7 +33,7 @@ class Character extends Component {
 }
 
 Character.propTypes = {
-  character: PropTypes.object.isRequired
+  character: PropTypes.object
 }
 
 export default CharacterContainer = createContainer(({ params }) => {
