@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 
+import DieStatLine from '../components/DieStatLine.jsx';
+
 export default class extends Component {
-  createNewCharacter(event){
-    alert('new character');
+  constructor(props){
+    super(props);
   }
 
   render() {
     return (
       <div>
-        <h3>Character Creation</h3>
-        <button onClick={this.createNewCharacter.bind(this)}>New Character</button>
+        <h3>Attributes</h3>
+        <div className="container">
+            <DieStatLine label="Strength" />
+            <DieStatLine label="Agility" />
+            <DieStatLine label="Smarts" />
+            <DieStatLine label="Spirit" />
+            <DieStatLine label="Vigor" />
+        </div>
       </div>
     );
   }

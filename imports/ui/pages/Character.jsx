@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDom from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Mongo } from 'meteor/mongo';
 
