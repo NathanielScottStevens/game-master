@@ -3,6 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import DieStatLine from '../components/DieStatLine.jsx';
 import { TempCharacters } from '../../startup/client/local.js';
+import { Skills } from '../../api/skills/skills.js';
 
 class CharacterCreation extends Component {
   constructor(props){
@@ -17,6 +18,31 @@ class CharacterCreation extends Component {
     TempCharacters.update(
       this.props.character._id,
       {$set: update}
+    );
+  }
+
+  updateSkill(field, value){
+    let update = {};
+    update["skills." + field] = value;
+
+    TempCharacters.update(
+      this.props.character._id,
+      {$set: update}
+    );
+  }
+
+  renderSkills(){
+    let skills = this.props.skills;
+    let character = this.props.character;
+
+    return skills.map(skill =>
+        <DieStatLine
+          key={skill._id}
+          label={skill.name}
+          field={skill.name}
+          value={character.skills[skill.name]}
+          action={this.updateSkill.bind(this)}
+        />
     );
   }
 
@@ -56,17 +82,24 @@ class CharacterCreation extends Component {
               action={this.updateStat.bind(this)}
             />
         </div>
+        <h3>Skills</h3>
+        <div className="container">
+          {this.renderSkills()}
+        </div>
       </div>
     );
   }
 }
 
 CharacterCreation.propTypes = {
-  character: PropTypes.object
+  character: PropTypes.object,
+  skills: PropTypes.array
 }
 
 export  default CharacterCreationContainer = createContainer(({ params }) => {
+  Meteor.subscribe("skills");
   return {
-    character: TempCharacters.findOne()
+    character: TempCharacters.findOne(),
+    skills: Skills.find({}).fetch()
   };
 }, CharacterCreation);

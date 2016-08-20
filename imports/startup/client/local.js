@@ -7,5 +7,6 @@ TempCharacters.insert({
   agility: 1,
   smarts: 1,
   spirit: 1,
-  vigor: 1
+  vigor: 1,
+  skills: {}
 });
