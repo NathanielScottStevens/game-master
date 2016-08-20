@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Mongo } from 'meteor/mongo';
 
 import { Characters } from '../../api/characters/characters.js';
 

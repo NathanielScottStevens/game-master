@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
 export default class extends Component {
   constructor(props){
     super(props);
-
-    this.state = {
-      buttonsEnabled: 0
-    };
   }
 
 
   setDieType(buttonsEnabled){
-    this.setState({
-        buttonsEnabled: buttonsEnabled,
-    });
+    buttonsEnabled = buttonsEnabled === this.props.value ? 0 : buttonsEnabled;
+    this.props.action(this.props.field, buttonsEnabled);
   }
 
   getButtonClass(index){
     let className = 'col-sm-2 btn ';
-    if (this.state.buttonsEnabled >= index){
+    if (this.props.value >= index){
       className += ' stat-button-active';
     }
     return className;
