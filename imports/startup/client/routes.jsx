@@ -2,13 +2,12 @@ import React, { component } from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import { App } from '../../ui/pages/App.jsx';
-import Index from '../../ui/pages/Index.jsx';
+import { App } from '../../ui/layouts/App.jsx';
 
+import Index from '../../ui/pages/Index.jsx';
 import CharacterList from '../../ui/pages/CharacterList.jsx';
 import Character from '../../ui/pages/Character.jsx';
 import CharacterCreation from '../../ui/pages/CharacterCreation.jsx';
-
 import NotFound from '../../ui/pages/NotFound.jsx';
 
 Meteor.startup( () => {
