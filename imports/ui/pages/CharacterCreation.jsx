@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import DieStatLine from '../components/DieStatLine.jsx';
 import { TempCharacters } from '../../startup/client/local.js';
 import { Skills } from '../../api/skills/skills.js';
+import SkillSelection from '../components/SkillSelection.jsx';
 
 class CharacterCreation extends Component {
   constructor(props){
@@ -49,6 +50,7 @@ class CharacterCreation extends Component {
   render() {
     return (
       <div>
+        <SkillSelection />
         <h3>Attributes</h3>
         <div className="container">
             <DieStatLine
@@ -96,10 +98,10 @@ CharacterCreation.propTypes = {
   skills: PropTypes.array
 }
 
-export  default CharacterCreationContainer = createContainer(({ params }) => {
+export default CharacterCreationContainer = createContainer(({ params }) => {
   Meteor.subscribe("skills");
   return {
     character: TempCharacters.findOne(),
-    skills: Skills.find({}).fetch()
+    skills: Skills.find().fetch()
   };
 }, CharacterCreation);
