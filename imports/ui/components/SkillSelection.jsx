@@ -3,37 +3,28 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import { Skills } from '../../api/skills/skills.js';
 
+import CheckListCard from './CheckListCard.jsx';
+
 class SkillSelection extends Component {
-
-  renderSkills(skills){
-    return skills.map(skill =>
-      <div className="form-check" key={skill._id}>
-        <label className="form-check-label">
-          <input className="form-check-input" type="checkbox" value="" />
-            {skill.name}
-        </label>
-      </div>
-    );
-  }
-
   render(){
     return(
-      <div className="form-group">
-        <div>
-          <h4>Strength</h4>
-          {this.renderSkills(this.props.strengthSkills)}
+      <div>
+        <div className="row">
+          <div className="col-sm-6">
+            <CheckListCard title="Strength" items={this.props.strengthSkills} />
+          </div>
+          <div className="col-sm-6">
+            <CheckListCard title="Spirit" items={this.props.spiritSkills} />
+          </div>
         </div>
-        <div>
-          <h4>Agility</h4>
-          {this.renderSkills(this.props.agilitySkills)}
-        </div>
-        <div>
-          <h4>Smarts</h4>
-          {this.renderSkills(this.props.smartsSkills)}
-        </div>
-        <div>
-          <h4>Spirit</h4>
-          {this.renderSkills(this.props.spiritSkills)}
+        
+        <div className="row">
+          <div className="col-sm-6">
+            <CheckListCard title="Smarts" items={this.props.smartsSkills} />
+          </div>
+          <div className="col-sm-6">
+            <CheckListCard title="Agility" items={this.props.agilitySkills} />
+          </div>
         </div>
       </div>
     );
@@ -41,7 +32,10 @@ class SkillSelection extends Component {
 }
 
 SkillSelection.propTypes = {
-  skills: PropTypes.array
+  strengthSkills: PropTypes.array,
+  agilitySkills: PropTypes.array,
+  smartsSkills: PropTypes.array,
+  spiritSkills: PropTypes.array
 }
 
 export default SkillSelectionContainer = createContainer(({ params }) => {

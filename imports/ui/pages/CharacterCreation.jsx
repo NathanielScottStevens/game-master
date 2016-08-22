@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import DieStatLine from '../components/DieStatLine.jsx';
 import { TempCharacters } from '../../startup/client/local.js';
 import { Skills } from '../../api/skills/skills.js';
+
+import DieStatLine from '../components/DieStatLine.jsx';
 import SkillSelection from '../components/SkillSelection.jsx';
 
 class CharacterCreation extends Component {

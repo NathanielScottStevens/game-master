@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
 
 export default class extends Component {
   constructor(props){
     super(props);
   }
-
 
   setDieType(buttonsEnabled){
     buttonsEnabled = buttonsEnabled === this.props.value ? 0 : buttonsEnabled;
