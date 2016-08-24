@@ -12,29 +12,29 @@ function setCharacters(){
 
 function setSkills(){
   Skills.remove({});
-  Skills.insert({name: "Boating",       attribute: "agility"});
-  Skills.insert({name: "Climbing",      attribute: "strength"});
-  Skills.insert({name: "Driving",       attribute: "agility"});
-  Skills.insert({name: "Fighting",      attribute: "agility"});
-  Skills.insert({name: "Gambling",      attribute: "smarts"});
-  Skills.insert({name: "Healing",       attribute: "smarts"});
-  Skills.insert({name: "Intimidation",  attribute: "spirit"});
-  Skills.insert({name: "Investigation", attribute: "smarts"});
-  Skills.insert({name: "Knowledge",     attribute: "smarts"});
-  Skills.insert({name: "Lockpicking",   attribute: "agility"});
-  Skills.insert({name: "Notice",        attribute: "smarts"});
-  Skills.insert({name: "Persuasion",    attribute: "spirit"});
-  Skills.insert({name: "Piloting",      attribute: "agility"});
-  Skills.insert({name: "Repair",        attribute: "smarts"});
-  Skills.insert({name: "Riding",        attribute: "agility"});
-  Skills.insert({name: "Shooting",      attribute: "agility"});
-  Skills.insert({name: "Stealth",       attribute: "agility"});
-  Skills.insert({name: "Streetwise",    attribute: "smarts"});
-  Skills.insert({name: "Survival",      attribute: "smarts"});
-  Skills.insert({name: "Swimming",      attribute: "agility"});
-  Skills.insert({name: "Taunt",         attribute: "smarts"});
-  Skills.insert({name: "Throwing",      attribute: "agility"});
-  Skills.insert({name: "Tracking",      attribute: "smarts"});
+  Skills.insert({name: "boating",       attribute: "agility"});
+  Skills.insert({name: "climbing",      attribute: "strength"});
+  Skills.insert({name: "driving",       attribute: "agility"});
+  Skills.insert({name: "fighting",      attribute: "agility"});
+  Skills.insert({name: "gambling",      attribute: "smarts"});
+  Skills.insert({name: "healing",       attribute: "smarts"});
+  Skills.insert({name: "intimidation",  attribute: "spirit"});
+  Skills.insert({name: "investigation", attribute: "smarts"});
+  Skills.insert({name: "knowledge",     attribute: "smarts"});
+  Skills.insert({name: "lockpicking",   attribute: "agility"});
+  Skills.insert({name: "notice",        attribute: "smarts"});
+  Skills.insert({name: "persuasion",    attribute: "spirit"});
+  Skills.insert({name: "piloting",      attribute: "agility"});
+  Skills.insert({name: "repair",        attribute: "smarts"});
+  Skills.insert({name: "riding",        attribute: "agility"});
+  Skills.insert({name: "shooting",      attribute: "agility"});
+  Skills.insert({name: "stealth",       attribute: "agility"});
+  Skills.insert({name: "streetwise",    attribute: "smarts"});
+  Skills.insert({name: "survival",      attribute: "smarts"});
+  Skills.insert({name: "swimming",      attribute: "agility"});
+  Skills.insert({name: "taunt",         attribute: "smarts"});
+  Skills.insert({name: "throwing",      attribute: "agility"});
+  Skills.insert({name: "tracking",      attribute: "smarts"});
 }
 
 Meteor.startup( () => {

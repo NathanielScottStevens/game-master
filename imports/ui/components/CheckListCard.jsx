@@ -1,43 +1,43 @@
 import React, { Component, PropTypes } from 'react';
 
+import CheckBox from './CheckBox.jsx';
+
 class CheckListCard extends Component {
   constructor(props){
     super(props);
+    this.onChange = props.onChange.bind(this);
   }
 
   renderItems(){
     return this.props.items.map(item =>
-      <div className="form-check list-group-item" key={item._id}>
-        <label className="form-check-label">
-          <input className="form-check-input" type="checkbox" value="" />
-            {item.name}
-        </label>
-      </div>
-    );
-  }
-
-  renderList(){
-    return (
-      <div className="list-group">
-        <h4 className="list-group-item check-list-title">{this.props.title}</h4>
-        {this.renderItems()}
-      </div>
+      <CheckBox
+        id={item.id}
+        label={item.label}
+        initialValue={item.initialValue}
+        onChange={this.onChange}
+      />
     );
   }
 
   render(){
     return(
       <div className="check-list-card">
-        {this.renderList()}
+        <div className="list-group">
+          <h4 className="list-group-item check-list-title">
+            {this.props.label}
+          </h4>
+          {this.renderItems()}
+        </div>
       </div>
     );
   }
 }
 
 CheckListCard.propTypes = {
-  title: PropTypes.string,
+  label: PropTypes.string,
   items: PropTypes.array,
-  toggleAction: PropTypes.func
+  onChange: PropTypes.func,
+  isChecked: PropTypes.func
 }
 
 export default CheckListCard;

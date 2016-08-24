@@ -6,24 +6,43 @@ import { Skills } from '../../api/skills/skills.js';
 import CheckListCard from './CheckListCard.jsx';
 
 class SkillSelection extends Component {
+  constructor(props){
+    super(props);
+    this.onChange = props.onChange.bind(this);
+  }
+
+  getItems(skills){
+    return skills.map(skill => {
+      let hasSkill = this.props.characterSkills.hasOwnProperty(skill.name);
+
+      return {
+        id: skill.name,
+        label: skill.name,
+        initialValue: hasSkill
+      }
+    });
+  }
+
   render(){
-    return(
+    let strengthItems = this.getItems(this.props.strengthSkills);
+    let agilityItems = this.getItems(this.props.agilitySkills);
+
+    return (
       <div>
         <div className="row">
           <div className="col-sm-6">
-            <CheckListCard title="Strength" items={this.props.strengthSkills} />
+            <CheckListCard
+              label="Strength"
+              items={strengthItems}
+              onChange={this.onChange}
+            />
           </div>
           <div className="col-sm-6">
-            <CheckListCard title="Spirit" items={this.props.spiritSkills} />
-          </div>
-        </div>
-        
-        <div className="row">
-          <div className="col-sm-6">
-            <CheckListCard title="Smarts" items={this.props.smartsSkills} />
-          </div>
-          <div className="col-sm-6">
-            <CheckListCard title="Agility" items={this.props.agilitySkills} />
+            <CheckListCard
+              label="Agility"
+              items={agilityItems}
+              onChange={this.onChange}
+            />
           </div>
         </div>
       </div>
@@ -32,6 +51,8 @@ class SkillSelection extends Component {
 }
 
 SkillSelection.propTypes = {
+  characterSkills: PropTypes.object,
+  onChange: PropTypes.func,
   strengthSkills: PropTypes.array,
   agilitySkills: PropTypes.array,
   smartsSkills: PropTypes.array,

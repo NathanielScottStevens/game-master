@@ -10,7 +10,6 @@ import SkillSelection from '../components/SkillSelection.jsx';
 class CharacterCreation extends Component {
   constructor(props){
     super(props);
-
   }
 
   updateStat(field, value){
@@ -23,9 +22,30 @@ class CharacterCreation extends Component {
     );
   }
 
+  toggleSkill(skill){
+    let current = this.props.character.skills[skill];
+    let update = {};
+
+    if (current === undefined){
+      update["skills." + skill] = 1;
+
+      TempCharacters.update(
+        this.props.character._id,
+        {$set: update}
+      );
+    } else {
+      update["skills." + skill] = "";
+
+      TempCharacters.update(
+        this.props.character._id,
+        {$unset: update}
+      );
+    }
+  }
+
   updateSkill(field, value){
     let update = {};
-    update["skills." + field] = value;
+    update["skills." + field] = value ? value : 0;
 
     TempCharacters.update(
       this.props.character._id,
@@ -43,7 +63,7 @@ class CharacterCreation extends Component {
           label={skill.name}
           field={skill.name}
           value={character.skills[skill.name]}
-          action={this.updateSkill.bind(this)}
+          action={this.updateSkill}
         />
     );
   }
@@ -51,7 +71,7 @@ class CharacterCreation extends Component {
   render() {
     return (
       <div>
-        <SkillSelection />
+        <SkillSelection characterSkills={this.props.character.skills} onChange={this.toggleSkill.bind(this)} />
         <h3>Attributes</h3>
         <div className="container">
             <DieStatLine
