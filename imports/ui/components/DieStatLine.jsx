@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class extends Component {
-  constructor(props){
-    super(props);
+class DieStatLine extends Component {
+
+  isCurrentlySelected(statLevel){
+    return statLevel === this.props.value;
   }
 
-  setDieType(buttonsEnabled){
-    buttonsEnabled = buttonsEnabled === this.props.value ? 0 : buttonsEnabled;
-    this.props.action(this.props.field, buttonsEnabled);
+  onClick(statLevel){
+    let newLevel = this.isCurrentlySelected(statLevel) ? 0 : statLevel;
+    this.props.action(this.props.field, newLevel);
   }
 
-  getButtonClass(index){
-    let className = 'col-sm-2 btn ';
-    if (this.props.value >= index){
-      className += ' stat-button-active';
-    }
-    return className;
+  isActive(statLevel){
+    return statLevel <= this.props.value;
+  }
+
+  convertToDie(statLevel){
+    return 2 + 2*statLevel;
   }
 
   render() {
@@ -25,31 +26,17 @@ export default class extends Component {
             <div className="form-group row">
               <label className="col-sm-2 col-form-label">{this.props.label}</label>
               <div className="btn-group col-sm-10" role="group">
-                <button htmlFor="button"
-                  onClick={this.setDieType.bind(this, 1)}
-                  className={this.getButtonClass(1)}
-                  >4
-                </button>
-                <button htmlFor="button"
-                  onClick={this.setDieType.bind(this, 2)}
-                  className={this.getButtonClass(2)}
-                  >6
-                </button>
-                <button htmlFor="button"
-                  onClick={this.setDieType.bind(this, 3)}
-                  className={this.getButtonClass(3)}
-                  >8
-                </button>
-                <button htmlFor="button"
-                  onClick={this.setDieType.bind(this, 4)}
-                  className={this.getButtonClass(4)}
-                  >10
-                </button>
-                <button htmlFor="button"
-                  onClick={this.setDieType.bind(this, 5)}
-                  className={this.getButtonClass(5)}
-                  >12
-                </button>
+                {
+                  ([1, 2, 3, 4, 5].map(statLevel =>
+                    (<button
+                        htmlFor="button"
+                        className={'col-sm-2 btn' + (this.isActive(statLevel) ? ' stat-button-active' : '')}
+                        onClick={this.onClick.bind(this, statLevel)}
+                      >
+                      {this.convertToDie()}
+                    </button>)
+                  ))
+                }
               </div>
             </div>
         </div>
@@ -57,3 +44,12 @@ export default class extends Component {
     );
   }
 }
+
+DieStatLine.PropTypes = {
+  label: PropTypes.string,
+  field: PropTypes.string,
+  value: PropTypes.number,
+  action: PropTypes.func
+}
+
+export default DieStatLine;

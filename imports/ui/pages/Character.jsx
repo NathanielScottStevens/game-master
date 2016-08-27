@@ -33,13 +33,3 @@ class Character extends Component {
 Character.propTypes = {
   character: PropTypes.object
 }
-
-export default CharacterContainer = createContainer(({ params }) => {
-  var { id } = params;
-  Meteor.subscribe("characters", character);
-  var character = Characters.findOne(id);
-
-  return {
-    character: character
-  };
-}, Character);
