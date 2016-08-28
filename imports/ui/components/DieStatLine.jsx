@@ -33,7 +33,7 @@ class DieStatLine extends Component {
                         className={'col-sm-2 btn' + (this.isActive(statLevel) ? ' stat-button-active' : '')}
                         onClick={this.onClick.bind(this, statLevel)}
                       >
-                      {this.convertToDie()}
+                      {this.convertToDie(statLevel)}
                     </button>)
                   ))
                 }

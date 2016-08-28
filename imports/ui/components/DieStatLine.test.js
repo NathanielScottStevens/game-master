@@ -38,6 +38,14 @@ describe('DieStatLine', () => {
       expect(dieStatLine.find('label').text()).to.contain('Strength');
     });
 
+    it('should show die values on buttons', () => {
+      expect(buttons.d4.text()).to.contain('4');
+      expect(buttons.d6.text()).to.contain('6');
+      expect(buttons.d8.text()).to.contain('8');
+      expect(buttons.d10.text()).to.contain('10');
+      expect(buttons.d12.text()).to.contain('12');
+    });
+
     it('should assign .stat-button-active to button at value', () => {
       expect(buttons.d8.hasClass('stat-button-active')).to.be.true;
     });
