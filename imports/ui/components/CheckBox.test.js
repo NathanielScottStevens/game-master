@@ -9,12 +9,12 @@ let checkBox;
 let id = 'id1'
 let onChange = sinon.spy();
 
-function render(label, initialValue){
+function render(label, value){
   checkBox = shallow(
     <CheckBox
       id={id}
       label={label}
-      initialValue={initialValue}
+      value={value}
       onChange={onChange}
     />
   );

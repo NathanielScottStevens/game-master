@@ -14,7 +14,7 @@ class CheckListCard extends Component {
       <CheckBox
         id={item.id}
         label={item.label}
-        initialValue={item.initialValue}
+        value={item.value}
         onChange={this.onChange}
       />
     );
@@ -37,7 +37,7 @@ class CheckListCard extends Component {
 CheckListCard.propTypes = {
   label: PropTypes.string,
   items: PropTypes.array,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default CheckListCard;

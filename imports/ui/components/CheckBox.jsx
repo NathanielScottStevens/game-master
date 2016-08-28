@@ -14,7 +14,7 @@ class CheckBox extends Component {
             className="form-check-input"
             type="checkbox"
             onClick={this.onChange}
-            checked={this.props.initialValue}
+            checked={this.props.value}
           />
             {this.props.label}
         </label>
@@ -26,7 +26,7 @@ class CheckBox extends Component {
 CheckBox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  initialValue: PropTypes.bool,
+  value: PropTypes.bool,
   onChange: PropTypes.func,
 }
 
