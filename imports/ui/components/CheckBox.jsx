@@ -13,7 +13,7 @@ class CheckBox extends Component {
           <input
             className="form-check-input"
             type="checkbox"
-            onChange={this.onChange}
+            onClick={this.onChange}
             checked={this.props.initialValue}
           />
             {this.props.label}

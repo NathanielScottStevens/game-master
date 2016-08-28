@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import DieStatLine from './DieStatLine.jsx';
+import DieStatLine from '../imports/ui/components/DieStatLine.jsx';
 
 storiesOf('DieStatLine', module)
   .add('stat level 0', () => (
