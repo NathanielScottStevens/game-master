@@ -6,9 +6,9 @@ import { expect } from 'meteor/practicalmeteor:chai';
 import StatList from './StatList.jsx';
 import DieStatLine from './DieStatLine.jsx';
 
-describe('StatList', () => {
+describe('StatList', function() {
 
-  context('Rendering', () => {
+  context('Rendering', function() {
     const data = {
       strength: 1,
       agility: 2,
@@ -19,11 +19,11 @@ describe('StatList', () => {
     const label = 'Attributes';
     const stats = shallow(<StatList data={data} label={label} />);
 
-    it('should show five DieStatLine children', () => {
+    it('should show five DieStatLine children', function() {
       expect(stats.find(DieStatLine)).to.have.a.lengthOf(5);
     });
 
-    it('should show the label', () => {
+    it('should show the label', function() {
       expect(stats.find('h3').text()).to.contain(label);
     });
   });

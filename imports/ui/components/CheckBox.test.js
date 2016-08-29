@@ -20,42 +20,42 @@ function render(label, value){
   );
 }
 
-describe('CheckBox', () => {
+describe('CheckBox', function() {
 
-  describe('Rendering', () => {
+  describe('Rendering', function() {
 
-    it('should display a label', () => {
+    it('should display a label', function() {
       render('Fighting');
       expect(checkBox.find('label').text()).to.contain('Fighting');
     });
 
-    context('When initialValue is true', () => {
-      it('should display as checked', () => {
+    context('When initialValue is true', function() {
+      it('should display as checked', function() {
         render('Fighting', true);
         expect(checkBox.find('[checked]').prop('checked')).to.be.true;
       });
     });
 
-    context('When initialValue is false', () => {
-      it('should not display as checked', () => {
+    context('When initialValue is false', function() {
+      it('should not display as checked', function() {
         render('Fighting', false);
         expect(checkBox.find('[checked]').prop('checked')).to.be.false;
       });
     });
   });
 
-  describe('Action', () => {
-    beforeEach(() => {
+  describe('Action', function() {
+    beforeEach(function() {
       onChange.reset();
       render('Fighting', true);
       checkBox.find('input').simulate('click');
     })
 
-    it('should call onChange', () => {
+    it('should call onChange', function() {
       expect(onChange).to.be.called;
     });
 
-    it('should call onChange with id', () => {
+    it('should call onChange with id', function() {
       expect(onChange).to.be.calledWith(id);
     })
   })

@@ -6,7 +6,7 @@ import { expect } from 'meteor/practicalmeteor:chai';
 import CheckListCard from './CheckListCard.jsx';
 import CheckBox from './CheckBox.jsx';
 
-describe('CheckListCard', () => {
+describe('CheckListCard', function() {
   let label = 'Agility';
   let items = [
     {id: '1', label: 'Fighting', value: true},
@@ -27,22 +27,22 @@ describe('CheckListCard', () => {
     );
   }
 
-  describe('Rendering', () => {
+  describe('Rendering', function() {
     render();
 
-    it('shows a label', () => {
+    it('shows a label', function() {
       expect(checkListCard.find('h4').text()).to.contain(label);
     });
 
-    it('shows all items', () => {
+    it('shows all items', function() {
       expect(checkListCard.find(CheckBox)).to.have.a.lengthOf(items.length);
     });
   });
 
-  describe('Actions', () => {
+  describe('Actions', function() {
     render();
 
-    it('calls onChange with correct args', () => {
+    it('calls onChange with correct args', function() {
       checkListCard.find(CheckBox).first().prop('onChange')('1');
       expect(onChange).to.have.been.called;
       expect(onChange).to.have.been.calledWith('1');

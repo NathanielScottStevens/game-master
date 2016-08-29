@@ -5,7 +5,7 @@ import { expect } from 'meteor/practicalmeteor:chai';
 
 import DieStatLine from './DieStatLine.jsx';
 
-describe('DieStatLine', () => {
+describe('DieStatLine', function() {
   const label = "Strength";
   const field = "strength";
   const valueForD8 = 3;
@@ -27,18 +27,18 @@ describe('DieStatLine', () => {
     };
   };
 
-  describe('Rendering', () => {
+  describe('Rendering', function() {
     render();
 
-    it('should show five buttons', () => {
+    it('should show five buttons', function() {
       expect(dieStatLine.find('button')).to.have.a.lengthOf(5);
     });
 
-    it('should show the label', () => {
+    it('should show the label', function() {
       expect(dieStatLine.find('label').text()).to.contain('Strength');
     });
 
-    it('should show die values on buttons', () => {
+    it('should show die values on buttons', function() {
       expect(buttons.d4.text()).to.contain('4');
       expect(buttons.d6.text()).to.contain('6');
       expect(buttons.d8.text()).to.contain('8');
@@ -46,43 +46,43 @@ describe('DieStatLine', () => {
       expect(buttons.d12.text()).to.contain('12');
     });
 
-    it('should assign .stat-button-active to button at value', () => {
+    it('should assign .stat-button-active to button at value', function() {
       expect(buttons.d8.hasClass('stat-button-active')).to.be.true;
     });
 
-    it('should assign .stat-button-active to all buttons below value', () => {
+    it('should assign .stat-button-active to all buttons below value', function() {
       expect(buttons.d4.hasClass('stat-button-active')).to.be.true;
       expect(buttons.d6.hasClass('stat-button-active')).to.be.true;
     });
 
-    it('should not assign .stat-button-active to all buttons above value', () => {
+    it('should not assign .stat-button-active to all buttons above value', function() {
       expect(buttons.d10.hasClass('stat-button-active')).to.be.false;
       expect(buttons.d12.hasClass('stat-button-active')).to.be.false;
     });
   });
 
-  describe('Action', () => {
-    context('When an unselected button is clicked', () => {
-      beforeEach(() => {
+  describe('Action', function() {
+    context('When an unselected button is clicked', function() {
+      beforeEach(function() {
         action.reset();
         render();
         buttons.d12.simulate('click');
       });
 
-      it('should call action with correct args', () => {
+      it('should call action with correct args', function() {
         buttons.d12.simulate('click');
         expect(action).to.be.calledWith(field, 5);
       });
     });
 
-    context('When the selected button is clicked', () => {
-      beforeEach(() => {
+    context('When the selected button is clicked', function() {
+      beforeEach(function() {
         action.reset();
         render();
         buttons.d8.simulate('click');
       });
 
-      it('should call action with value of 0', () => {
+      it('should call action with value of 0', function() {
         expect(action).to.be.calledWith(field, 0);
       });
     });
