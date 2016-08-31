@@ -12,3 +12,69 @@
 .check-list-card {
   margin: 10px;
 }
+
+//Adapt to use this https://css-tricks.com/examples/TriangleBreadcrumbs/steps.php
+
+.arrow-breadcrumb {
+	list-style: none;
+	overflow: hidden;
+}
+.arrow-breadcrumb li {
+	float: left;
+}
+
+.arrow-breadcrumb li a {
+	color: $btn-primary-color !important; //Why does bootstrap overwrite this without !important?
+	text-decoration: none;
+	padding: 10px 0 10px 65px;
+	background: $gray-lighter;
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.arrow-breadcrumb .active {
+  background: $btn-primary-bg;
+}
+
+.arrow-breadcrumb li a:after {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+	border-bottom: 50px solid transparent;
+	border-left: 30px solid $gray-lighter;
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	left: 100%;
+	z-index: 2;
+}
+
+.arrow-breadcrumb li a:before {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-bottom: 50px solid transparent;
+	border-left: 30px solid white;
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	margin-left: 1px;
+	left: 100%;
+	z-index: 1;
+}
+
+  .arrow-breadcrumb li a:after {
+  border-left-color: $btn-primary-bg !important;
+}
+
+// .arrow-breadcrumb li a:hover { background: $btn-primary-bg; }
+// .arrow-breadcrumb li a:hover:after { border-left-color: $btn-primary-bg !important; }
+
+.arrow-breadcrumb li:first-child a {
+	padding-left: 40px;
+}
