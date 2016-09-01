@@ -15,14 +15,14 @@ storiesOf('BreadCrumb', module)
   .add('Step 3', () => (
     <BreadCrumb
       list={list}
-      selected={3}
+      selected={2}
       onChange={()=>{}}
     />
   ))
   .add('Step 5', () => (
     <BreadCrumb
       list={list}
-      selected={5}
+      selected={4}
       onChange={()=>{}}
     />
   ))

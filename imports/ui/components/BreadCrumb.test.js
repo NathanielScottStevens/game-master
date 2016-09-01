@@ -30,22 +30,16 @@ describe('BreadCrumb', function() {
     });
 
     it('show active class on selected item', function() {
-      expect(breadCrumb.find('a').at(selected).hasClass('active')).to.be.true;
+      expect(breadCrumb.find('li').at(selected).hasClass('active')).to.be.true;
     });
 
-    it('show active class on items less than selected item', function() {
+    it('does not show active class on all other items', function() {
       let aTags = breadCrumb.find('a');
 
-      for (var i = 0; i < selected; i++){
-        expect(aTags.at(i).hasClass('active')).to.be.true;
-      }
-    });
-
-    it('does not show active class on items greater than selected item', function() {
-      let aTags = breadCrumb.find('a');
-
-      for (var i = selected + 1; i < aTags.length; i++){
-        expect(aTags.at(i).hasClass('active')).to.be.false;
+      for (var i = 0; i < aTags.length; i++){
+        if (i !== selected){
+            expect(aTags.at(i).hasClass('active')).to.be.false;
+        }
       }
     });
   });

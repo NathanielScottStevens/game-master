@@ -2,23 +2,22 @@ import React, { Component, PropTypes } from 'react';
 
 class BreadCrumb extends Component {
 
+  renderItems(){
+    return this.props.list.map((item, index) => {
+      return (
+        <li key={index} className={index === this.props.selected ? "active" : ""}>
+          <a onClick={this.props.onChange.bind(this, index)}>
+            {item}
+          </a>
+        </li>
+      );
+    });
+  }
+
   render() {
     return(
       <ul className="arrow-breadcrumb">
-      {
-        this.props.list.map((item, index) => {
-          return (
-            <li key={index}>
-              <a
-              onClick={this.props.onChange.bind(this, index)}
-              className={index <= this.props.selected ? "active" : ""}
-              >
-                {item}
-              </a>
-            </li>
-          );
-        })
-      }
+        {this.renderItems()}
       </ul>
     );
   }

@@ -13,68 +13,79 @@
   margin: 10px;
 }
 
-//Adapt to use this https://css-tricks.com/examples/TriangleBreadcrumbs/steps.php
 
+//https://css-tricks.com/examples/TriangleBreadcrumbs/steps.php
 .arrow-breadcrumb {
-	list-style: none;
-	overflow: hidden;
+    padding: 0;
+    overflow: hidden;
 }
+
+.arrow-breadcrumb a {
+    //color: $gray;
+    text-decoration: none;
+}
+
 .arrow-breadcrumb li {
-	float: left;
+    float: left;
+    margin-left: 0;
+    width: 150px; /* 100 / number of steps */
+    height: 50px; /* total height */
+    list-style-type: none;
+    padding: 10px 5px 5px 35px; /* padding around text, last should include arrow width */
+    border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+    position: relative;
 }
 
-.arrow-breadcrumb li a {
-	color: $btn-primary-color !important; //Why does bootstrap overwrite this without !important?
-	text-decoration: none;
-	padding: 10px 0 10px 65px;
-	background: $gray-lighter;
-	position: relative;
-	display: block;
-	float: left;
+/* remove extra padding on the first object since it doesn't have an arrow to the left */
+.arrow-breadcrumb li:first-child {
+    padding-left: 5px;
 }
 
-.arrow-breadcrumb .active {
-  background: $btn-primary-bg;
+/* white arrow to the left to "erase" background (starting from the 2nd object) */
+.arrow-breadcrumb li:nth-child(n+2)::before {
+    position: absolute;
+    top:0;
+    left:0;
+    display: block;
+    border-left: 25px solid white; /* width: arrow width, color: background of document */
+    border-top: 25px solid transparent; /* width: half height */
+    border-bottom: 25px solid transparent; /* width: half height */
+    width: 0;
+    height: 0;
+    content: " ";
 }
 
-.arrow-breadcrumb li a:after {
-	content: " ";
-	display: block;
-	width: 0;
-	height: 0;
-	border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
-	border-bottom: 50px solid transparent;
-	border-left: 30px solid $gray-lighter;
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
-	left: 100%;
-	z-index: 2;
+/* colored arrow to the right */
+.arrow-breadcrumb li::after {
+    z-index: 1; /* need to bring this above the next item */
+    position: absolute;
+    top: 0;
+    right: -25px; /* arrow width (negated) */
+    display: block;
+    border-left: 25px solid; /* width: arrow width */
+    border-top: 25px solid transparent; /* width: half height */
+    border-bottom: 25px solid transparent; /* width: half height */
+    width:0;
+    height:0;
+    content: " ";
 }
 
-.arrow-breadcrumb li a:before {
-	content: " ";
-	display: block;
-	width: 0;
-	height: 0;
-	border-top: 50px solid transparent;
-	border-bottom: 50px solid transparent;
-	border-left: 30px solid white;
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
-	margin-left: 1px;
-	left: 100%;
-	z-index: 1;
-}
+/* Setup colors (both the background and the arrow) */
 
-  .arrow-breadcrumb li a:after {
-  border-left-color: $btn-primary-bg !important;
-}
+/* Completed */
+.arrow-breadcrumb li { background-color: lighten($btn-primary-bg, 40%); }
+.arrow-breadcrumb li::after { border-left-color: lighten($btn-primary-bg, 40%); }
 
-// .arrow-breadcrumb li a:hover { background: $btn-primary-bg; }
-// .arrow-breadcrumb li a:hover:after { border-left-color: $btn-primary-bg !important; }
+/* Current */
+.arrow-breadcrumb li.active {
+  background-color: lighten($btn-primary-bg, 20%);
+  color: white !important; }
+.arrow-breadcrumb li.active::after { border-left-color: lighten($btn-primary-bg, 20%); }
 
-.arrow-breadcrumb li:first-child a {
-	padding-left: 40px;
-}
+/* Following */
+.arrow-breadcrumb li.active ~ li { background-color: $gray-lighter; }
+.arrow-breadcrumb li.active ~ li::after {	border-left-color: $gray-lighter; }
+
+/* Hover for completed and current */
+.arrow-breadcrumb li:hover {background-color: $btn-primary-bg}
+.arrow-breadcrumb li:hover::after {border-left-color: $btn-primary-bg}
