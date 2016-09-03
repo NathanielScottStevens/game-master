@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import CheckListCard from './CheckListCard.jsx';
 
+
 class SkillSelection extends Component {
   constructor(props){
     super(props);

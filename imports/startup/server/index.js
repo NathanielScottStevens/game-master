@@ -1,3 +1,4 @@
-import { Characters } from '../../api/characters/characters.js';
+import '../../api/characters';
+import '../../api/skills';
 
 import './fixtures.js';
