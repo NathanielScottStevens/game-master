@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "story": "start-storybook -p 6006"
+    "story": "start-storybook -p 6006",
+    "t": "meteor test --driver-package practicalmeteor:mocha"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",

@@ -41,7 +41,7 @@ Meteor.methods({
     let character = Characters.findOne(id);
 
     if (character.skills[skill]) {
-      Characters.update(id, { $unset: { skills: { [skill]: undefined }}});
+      Characters.update(id, { $unset: { [`skills.${skill}`]: '' }});
     } else {
       Characters.update(id, { $set: { skills: { [skill]: 1 }}});
     }
