@@ -1,54 +1,41 @@
+import React from 'react';
 import { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import DieStatLine from '../components/DieStatLine.jsx';
+import BreadCrumb from '../components/BreadCrumb.jsx';
 import SkillSelection from '../components/SkillSelection.jsx';
-
+import StatList from '../components/StatList.jsx';
 
 
 class CharacterCreation extends Component {
   constructor(props){
     super(props);
+    this.state = {step: 0};
   }
 
-  updateStat(field, value) {
-    let update = {};
-    update[field] = value;
-
-    TempCharacters.update(
-      this.props.character._id,
-      {$set: update}
-    );
+  onSkillSelectionChange(skill) {
+    Meteor.call('characters.toggleSkill', this.props.character._id, skill);
   }
 
-  toggleSkill(skill){
-    let current = this.props.character.skills[skill];
-    let update = {};
-
-    if (current === undefined){
-      update["skills." + skill] = 1;
-
-      TempCharacters.update(
-        this.props.character._id,
-        {$set: update}
-      );
-    } else {
-      update["skills." + skill] = "";
-
-      TempCharacters.update(
-        this.props.character._id,
-        {$unset: update}
-      );
+  renderStep(){
+    switch (this.state.step) {
+      default:
+      case 0:
+        return ( <SkillSelection onChange={ this.onSkillSelectionChange.bind(this) } /> );
+      case 1:
+        return (
+          <StatList label="Attributes" items={ this.props.character.attributes } /> );
+      case 2:
+        return ( <StatList label="Skills" items={ this.props.character.skills } /> );
     }
   }
 
-  updateSkill(field, value){
-    let update = {};
-    update["skills." + field] = value ? value : 0;
-
-    TempCharacters.update(
-      this.props.character._id,
-      {$set: update}
+  render(){
+    return (
+      <div>
+        <BreadCrumb />
+        {this.renderStep()}
+      </div>
     );
   }
 }

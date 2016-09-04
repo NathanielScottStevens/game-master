@@ -14,13 +14,13 @@ class StatList extends Component {
         <h3>{this.props.label}</h3>
         <div>
           {
-            (Object.keys(this.props.data).map(attribute =>
+            (Object.keys(this.props.items).map(item =>
               <DieStatLine
-                label={attribute.toUpperCase()}
-                field={attribute}
-                value={this.props.data[attribute]}
+                label={item.toUpperCase()}
+                field={item}
+                value={this.props.items[item]}
                 action={this.onChange}
-                key={attribute}
+                key={item}
               />
             ))
           }
@@ -31,7 +31,7 @@ class StatList extends Component {
 }
 
 StatList.propTypes = {
-  data: PropTypes.object,
+  items: PropTypes.object,
   label: PropTypes.string,
   onChange: PropTypes.func
 }

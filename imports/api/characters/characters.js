@@ -21,6 +21,22 @@ Characters.helpers({
   }
 });
 
+Factory.define('character', Characters, {
+  attributes: {
+    strength: 1,
+    agility: 2,
+    smarts: 3,
+    spirit: 4,
+    vigor: 5,
+  },
+  skills: {
+    climbing: 1,
+    fighting: 2,
+    gambling: 3,
+    intimidation: 4,
+  },
+});
+
 
 if (Meteor.isServer) {
   Meteor.publish('characters', function() {
