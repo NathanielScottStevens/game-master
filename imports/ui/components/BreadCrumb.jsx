@@ -2,20 +2,18 @@ import React, { Component, PropTypes } from 'react';
 
 class BreadCrumb extends Component {
 
-  renderItems(){
-    return this.props.list.map((item, index) => {
-      return (
-        <li key={index} className={index === this.props.selected ? "active" : ""}>
-          <a onClick={this.props.onChange.bind(this, index)}>
+  renderItems() {
+    return this.props.list.map((item, index) =>
+      <li key={index} className={index === this.props.selected ? 'active' : ''}>
+        <a onClick={this.props.onChange.bind(this, index)}>
             {item}
-          </a>
-        </li>
-      );
-    });
+        </a>
+      </li>
+    );
   }
 
   render() {
-    return(
+    return (
       <ul className="arrow-breadcrumb">
         {this.renderItems()}
       </ul>
@@ -26,7 +24,7 @@ class BreadCrumb extends Component {
 BreadCrumb.propTypes = {
   list: PropTypes.array,
   selected: PropTypes.number,
-  onChange: PropTypes.func
-}
+  onChange: PropTypes.func,
+};
 
 export default BreadCrumb;

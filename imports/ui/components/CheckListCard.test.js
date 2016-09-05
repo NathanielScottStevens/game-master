@@ -2,22 +2,23 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { sinon } from 'meteor/practicalmeteor:sinon';
 import { expect } from 'meteor/practicalmeteor:chai';
+import { describe, it } from 'meteor/practicalmeteor:mocha';
 
 import CheckListCard from './CheckListCard.jsx';
 import CheckBox from './CheckBox.jsx';
 
-describe('CheckListCard', function() {
-  let label = 'Agility';
-  let items = [
-    {id: '1', label: 'Fighting', value: true},
-    {id: '2', label: 'Throwing', value: false},
-    {id: '3', label: 'Shooting', value: true}
+describe('CheckListCard', function () {
+  const label = 'Agility';
+  const items = [
+    { id: '1', label: 'Fighting', value: true },
+    { id: '2', label: 'Throwing', value: false },
+    { id: '3', label: 'Shooting', value: true },
   ];
-  let onChange = sinon.spy();
+  const onChange = sinon.spy();
 
   let checkListCard;
 
-  function render(){
+  function render() {
     checkListCard = shallow(
       <CheckListCard
         label={label}
@@ -27,27 +28,25 @@ describe('CheckListCard', function() {
     );
   }
 
-  describe('Rendering', function() {
+  describe('Rendering', function () {
     render();
 
-    it('shows a label', function() {
+    it('shows a label', function () {
       expect(checkListCard.find('h4').text()).to.contain(label);
     });
 
-    it('shows all items', function() {
+    it('shows all items', function () {
       expect(checkListCard.find(CheckBox)).to.have.a.lengthOf(items.length);
     });
   });
 
-  describe('Actions', function() {
+  describe('Actions', function () {
     render();
 
-    it('calls onChange with correct args', function() {
+    it('calls onChange with correct args', function () {
       checkListCard.find(CheckBox).first().prop('onChange')('1');
       expect(onChange).to.have.been.called;
       expect(onChange).to.have.been.calledWith('1');
     });
-
   });
-
 });

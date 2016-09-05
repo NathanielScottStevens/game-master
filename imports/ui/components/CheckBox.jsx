@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 
 class CheckBox extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.onChange = props.onChange.bind(this, props.id);
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="form-check list-group-item" key={this.props.id}>
         <label className="form-check-label">
           <input
@@ -28,6 +28,6 @@ CheckBox.propTypes = {
   label: PropTypes.string,
   value: PropTypes.bool,
   onChange: PropTypes.func,
-}
+};
 
 export default CheckBox;

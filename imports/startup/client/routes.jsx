@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -10,17 +10,17 @@ import Character from '../../ui/pages/Character.jsx';
 import CharacterCreation from '../../ui/pages/CharacterCreation.jsx';
 import NotFound from '../../ui/pages/NotFound.jsx';
 
-Meteor.startup( () => {
+Meteor.startup(() => {
   render((
-    <Router history={ browserHistory }>
-      <Route path="/" component={ App }>
-        <IndexRoute component={ Index } />
-        <Route path="/characters" component={ CharacterList } />
-        <Route path="/characters/:id" component={ Character } />
-        <Route path="/charactercreation" component={ CharacterCreation } />
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Index} />
+        <Route path="/characters" component={CharacterList} />
+        <Route path="/characters/:id" component={Character} />
+        <Route path="/charactercreation" component={CharacterCreation} />
       </Route>
-      <Route path="*" component={ NotFound } />
+      <Route path="*" component={NotFound} />
     </Router>),
-    document.getElementById( 'react-root' )
+    document.getElementById('react-root')
   );
 });

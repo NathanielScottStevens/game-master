@@ -1,17 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Characters } from '../../api/characters/characters.js';
 
-export default class Character extends Component {
-  render() {
-    return (
-      <div>
-        <Link to={"characters/" + this.props.character._id}>{this.props.character.firstName} {this.props.character.lastName}</Link>
-      </div>
-    );
-  }
+function Character({ character }) {
+  return (
+    <div>
+      <Link to={`characters/${character._id}`} >
+        {character.firstName} {character.lastName}
+      </Link>
+    </div>
+  );
 }
 
 Character.propTypes = {
   character: PropTypes.object.isRequired,
-}
+};
+
+export default Character;

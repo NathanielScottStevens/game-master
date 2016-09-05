@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { sinon } from 'meteor/practicalmeteor:sinon';
 import { expect } from 'meteor/practicalmeteor:chai';
+import { describe, context, it } from 'meteor/practicalmeteor:mocha';
 
 import CharacterCreation from './CharacterCreation.jsx';
 import BreadCrumb from '../components/BreadCrumb.jsx';
@@ -9,6 +10,7 @@ import SkillSelection from '../components/SkillSelection.jsx';
 import StatList from '../components/StatList.jsx';
 import { Characters } from '../../api/characters/characters.js';
 import { skills } from '../../api/skills/fixtures.js';
+import PointBox from '../components/PointBox.jsx';
 
 describe('CharacterCreation', function() {
 
@@ -163,6 +165,83 @@ describe('CharacterCreation', function() {
         expect(actual).to.equal(expected);
       });
     });
+  });
+
+  describe('Spending Points', function() {
+    context('when initializing', function() {
+      before(function() {
+          render(Factory.create('character'));
+      });
+
+      it('should set attribute points to 5', function() {
+        let actual = component.find('[data-id=attribute-point-box]').text();
+        expect(actual).to.contain('5');
+      });
+
+      it('should set skill points to 15', function() {
+        let actual = component.find('[data-id=skill-point-box]').text();
+        expect(actual).to.contain('15');
+      });
+    });
+
+    context('when adding a skill', function() {
+      it('should remove one skill point', function() {
+        let character = Factory.create('character', { skills: { }});
+        render(character);
+
+        let skillSelection = component.find(SkillSelection).first();
+        skillSelection.prop('onChange')('climbing');
+
+        //let actual = component.find('[data-id=skill-point-box]').text();
+
+        //expect(component.state('skillPoints')).to.equal(14);
+      });
+    });
+
+    context('when removing a skill', function() {
+      it('should add one skill point', function() {
+        let character = Factory.create('character', { skills: { climbing: 1 }});
+        render(character);
+
+        let skillSelection = component.find(SkillSelection).first();
+        skillSelection.prop('onChange')('climbing');
+
+        expect(component.state('skillPoints')).to.equal(16);
+      });
+    });
+
+    context('when increasing a skill up to governing attribute', function() {
+      it('should remove one skill point per die increase', function() {
+        let skill = skills.find(skill => skill.attribute === 'smarts');
+        let character = Factory.create('character', {
+          attributes: { smarts: 5 }, skills: { [skill]: 1 }});
+        render(character);
+
+        component.setState({ step: 2 });
+
+        let statList = component.find(StatList).first();
+        statList.prop('onChange')(skill, 5);
+
+        expect(component.state('skillPoints')).to.equal(11);
+      });
+    });
+
+    context('when increasing a skill past governing attribute', function() {
+      it('should remove one skill point per die increase', function() {
+        let skill = skills.find(skill => skill.attribute === 'smarts');
+        let character = Factory.create('character', {
+          attributes: { smarts: 3 }, skills: { [skill]: 3 }});
+        render(character);
+
+        component.setState({ step: 2 });
+
+        let statList = component.find(StatList).first();
+        statList.prop('onChange')(skill, 4);
+
+        expect(component.state('skillPoints')).to.equal(13);
+      });
+    });
+
   });
 
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import BreadCrumb from '../components/BreadCrumb.jsx';
 import SkillSelection from '../components/SkillSelection.jsx';
@@ -7,10 +6,14 @@ import StatList from '../components/StatList.jsx';
 
 
 class CharacterCreation extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state = {step: 0};
+    this.state = {
+      step: 0,
+      attributePoints: 5,
+      skillPoints: 15,
+    };
 
     this.onSkillSelectionChange = this.onSkillSelectionChange.bind(this);
     this.onAttributeChange = this.onAttributeChange.bind(this);
@@ -18,6 +21,11 @@ class CharacterCreation extends Component {
   }
 
   onSkillSelectionChange(skill) {
+    let delta = this.props.character.skills[skill] ? 1 : -1;
+    let newPoints = this.state.skillPoints + delta;
+
+    this.setState({ skillPoints: newPoints });
+
     Meteor.call('characters.toggleSkill', this.props.character._id, skill);
   }
 
@@ -26,6 +34,20 @@ class CharacterCreation extends Component {
   }
 
   onSkillChange(skill, value) {
+    if (this.props.character.skills[skill] < value) {
+
+    } else {
+
+    }
+
+    let attribute = skills.find(s => s.name === skill).attribute;
+    attributeDiff = value - this.props.character.attributes[attribute];
+
+    let delta = this.props.character.skills[skill] - value;
+    let newPoints = this.state.skillPoints + delta;
+
+    this.setState({ skillPoints: newPoints });
+
     Meteor.call('characters.updateSkill', this.props.character._id, skill, value);
   }
 
@@ -42,16 +64,16 @@ class CharacterCreation extends Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <div>
         <BreadCrumb
-          list={ [
+          list={[
             'Select Skills',
             'Attributes',
             'Point Skills'
-          ] }
-          selected={ this.state.step }
+          ]}
+          selected={this.state.step}
           onChange={()=>{}}
         />
         {this.renderStep()}

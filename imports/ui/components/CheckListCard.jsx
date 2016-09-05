@@ -3,13 +3,13 @@ import React, { Component, PropTypes } from 'react';
 import CheckBox from './CheckBox.jsx';
 
 class CheckListCard extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.onChange = props.onChange.bind(this);
   }
 
-  renderItems(){
+  renderItems() {
     return this.props.items.map(item =>
       <CheckBox
         id={item.id}
@@ -20,8 +20,8 @@ class CheckListCard extends Component {
     );
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="check-list-card">
         <div className="list-group">
           <h4 className="list-group-item check-list-title">
@@ -37,7 +37,7 @@ class CheckListCard extends Component {
 CheckListCard.propTypes = {
   label: PropTypes.string,
   items: PropTypes.array,
-  onChange: PropTypes.func
-}
+  onChange: PropTypes.func,
+};
 
 export default CheckListCard;

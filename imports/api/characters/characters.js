@@ -4,21 +4,21 @@ export const Characters = new Mongo.Collection('characters');
 
 Characters.helpers({
   create() {
-    let newCharacter = {
+    const newCharacter = {
       attributes: {
         strength: 1,
         agility: 1,
         smarts: 1,
         spirit: 1,
-        vigor: 1
+        vigor: 1,
       },
-      skills: {}
+      skills: {},
     };
 
     Characters.insert(newCharacter);
 
     return newCharacter;
-  }
+  },
 });
 
 Factory.define('character', Characters, {
@@ -39,27 +39,27 @@ Factory.define('character', Characters, {
 
 
 if (Meteor.isServer) {
-  Meteor.publish('characters', function() {
+  Meteor.publish('characters', function () {
     return Characters.find();
   })
 }
 
 Meteor.methods({
-  'characters.updateAttribute': function(id, attribute, value) {
-    Characters.update(id, { $set: { attributes: { [attribute]: value }}});
+  'characters.updateAttribute': function (id, attribute, value) {
+    Characters.update(id, { $set: { attributes: { [attribute]: value } } });
   },
 
-  'characters.updateSkill': function(id, skill, value) {
-    Characters.update(id, { $set: { skills: { [skill]: value }}});
+  'characters.updateSkill': function (id, skill, value) {
+    Characters.update(id, { $set: { skills: { [skill]: value } } });
   },
 
   'characters.toggleSkill': function(id, skill) {
-    let character = Characters.findOne(id);
+    const character = Characters.findOne(id);
 
     if (character.skills[skill]) {
-      Characters.update(id, { $unset: { [`skills.${skill}`]: '' }});
+      Characters.update(id, { $unset: { [`skills.${skill}`]: '' } });
     } else {
-      Characters.update(id, { $set: { skills: { [skill]: 1 }}});
+      Characters.update(id, { $set: { skills: { [skill]: 1 } } });
     }
   },
-} );
+});
