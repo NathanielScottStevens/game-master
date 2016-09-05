@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import SkillSelection from '../imports/ui/components/SkillSelection.jsx';
-import { skills } from '../imports/api/skills/fixtures.js';
-
+import SkillSelection from './SkillSelection.jsx';
+import { skills } from '../../api/skills/fixtures.js';
 
 let skillSelection;
 

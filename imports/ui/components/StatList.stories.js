@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import StatList from '../imports/ui/components/StatList.jsx';
+import StatList from './StatList.jsx';
 
-const data = {
+const items = {
   strength: 1,
   agility: 2,
   smarts: 3,
@@ -13,7 +13,7 @@ const data = {
 storiesOf('StatList', module)
   .add('Attributes', () => (
     <StatList
-      data={data}
+      items={items}
       label='Attributes'
     />
   ))

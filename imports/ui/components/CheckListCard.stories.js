@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import CheckListCard from '../imports/ui/components/CheckListCard.jsx';
+import CheckListCard from './CheckListCard.jsx';
 
 const items = [
   {id: '1', label: 'Fighting', value: true},

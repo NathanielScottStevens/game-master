@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import BreadCrumb from '../imports/ui/components/BreadCrumb.jsx';
+import BreadCrumb from './BreadCrumb.jsx';
 
 let list = ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5' ];
 
