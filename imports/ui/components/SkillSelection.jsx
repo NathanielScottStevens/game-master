@@ -72,9 +72,9 @@ class SkillSelection extends Component {
 }
 
 SkillSelection.propTypes = {
-  characterSkills: PropTypes.object,
-  onChange: PropTypes.func,
-  skills: PropTypes.array,
+  characterSkills: PropTypes.object.require,
+  skills: PropTypes.array.require,
+  onChange: PropTypes.func,  
 }
 
 export default SkillSelection;
