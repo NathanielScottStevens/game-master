@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import DieStatLine from '../components/DieStatLine.jsx';
 
 class StatList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.onChange = props.onChange ? props.onChange.bind(this) : null;
   }
@@ -33,7 +33,7 @@ class StatList extends Component {
 StatList.propTypes = {
   items: PropTypes.object,
   label: PropTypes.string,
-  onChange: PropTypes.func
-}
+  onChange: PropTypes.func,
+};
 
 export default StatList;

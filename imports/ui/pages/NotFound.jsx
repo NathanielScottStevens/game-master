@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class extends Component {
-  render() {
-    return (
-      <h3>404 Not Found</h3>
-    );
-  }
+function NotFound() {
+  return (
+    <h3>404 Not Found</h3>
+  );
 }
+
+export default NotFound;

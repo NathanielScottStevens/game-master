@@ -21,8 +21,8 @@ class CharacterCreation extends Component {
   }
 
   onSkillSelectionChange(skill) {
-    let delta = this.props.character.skills[skill] ? 1 : -1;
-    let newPoints = this.state.skillPoints + delta;
+    const delta = this.props.character.skills[skill] ? 1 : -1;
+    const newPoints = this.state.skillPoints + delta;
 
     this.setState({ skillPoints: newPoints });
 
@@ -34,33 +34,41 @@ class CharacterCreation extends Component {
   }
 
   onSkillChange(skill, value) {
-    if (this.props.character.skills[skill] < value) {
-
-    } else {
-
-    }
-
-    let attribute = skills.find(s => s.name === skill).attribute;
+    const attribute = skills.find(s => s.name === skill).attribute;
     attributeDiff = value - this.props.character.attributes[attribute];
 
-    let delta = this.props.character.skills[skill] - value;
-    let newPoints = this.state.skillPoints + delta;
+    const delta = this.props.character.skills[skill] - value;
+    const newPoints = this.state.skillPoints + delta;
 
     this.setState({ skillPoints: newPoints });
 
     Meteor.call('characters.updateSkill', this.props.character._id, skill, value);
   }
 
-  renderStep(){
+  renderStep() {
     switch (this.state.step) {
       default:
       case 0:
-        return ( <SkillSelection characterSkills={ this.props.character.skills } skills={ this.props.skills } onChange={ this.onSkillSelectionChange } /> );
+        return (
+          <SkillSelection
+            characterSkills={this.props.character.skills}
+            skills={this.props.skills}
+            onChange={this.onSkillSelectionChange}
+          />);
       case 1:
         return (
-          <StatList label="Attributes" items={ this.props.character.attributes } onChange={ this.onAttributeChange } /> );
+          <StatList
+            label="Attributes"
+            items={this.props.character.attributes}
+            onChange={this.onAttributeChange}
+          />);
       case 2:
-        return ( <StatList label="Skills" items={ this.props.character.skills } onChange={ this.onSkillChange } /> );
+        return (
+          <StatList
+            label="Skills"
+            items={this.props.character.skills}
+            onChange={this.onSkillChange}
+          />);
     }
   }
 
@@ -71,10 +79,10 @@ class CharacterCreation extends Component {
           list={[
             'Select Skills',
             'Attributes',
-            'Point Skills'
+            'Point Skills',
           ]}
           selected={this.state.step}
-          onChange={()=>{}}
+          onChange={() => {}}
         />
         {this.renderStep()}
       </div>
@@ -85,6 +93,6 @@ class CharacterCreation extends Component {
 CharacterCreation.propTypes = {
   character: PropTypes.object.required,
   skills: PropTypes.object.required,
-}
+};
 
 export default CharacterCreation;

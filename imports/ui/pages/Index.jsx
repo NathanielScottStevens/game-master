@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class extends Component {
-  render() {
-    return (
-      <h3>Index</h3>
-    );
-  }
+function Index() {
+  return (
+    <h3>Index</h3>
+  );
 }
+
+export default Index;

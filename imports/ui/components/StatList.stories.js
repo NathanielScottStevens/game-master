@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@kadira/storybook';
 import StatList from './StatList.jsx';
 
 const items = {
@@ -7,13 +7,13 @@ const items = {
   agility: 2,
   smarts: 3,
   spirit: 4,
-  vigor: 1
-}
+  vigor: 1,
+};
 
 storiesOf('StatList', module)
   .add('Attributes', () => (
     <StatList
       items={items}
-      label='Attributes'
+      label="Attributes"
     />
-  ))
+  ));

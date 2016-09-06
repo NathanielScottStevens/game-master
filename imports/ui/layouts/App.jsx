@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 
 import Navigation from '../components/Navigation.jsx';
 
-export const App = ({ children }) => (
+const App = ({ children }) => (
   <div>
     <header>
       <h1>Game Master</h1>
@@ -12,4 +12,10 @@ export const App = ({ children }) => (
       { children }
     </main>
   </div>
-)
+);
+
+App.propTypes = {
+  children: PropTypes.object,
+};
+
+export default App;

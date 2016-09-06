@@ -41,7 +41,7 @@ Factory.define('character', Characters, {
 if (Meteor.isServer) {
   Meteor.publish('characters', function () {
     return Characters.find();
-  })
+  });
 }
 
 Meteor.methods({

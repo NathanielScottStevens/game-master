@@ -4,9 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import Attributes from '../components/Attributes.jsx';
 import Skills from '../components/Skills.jsx';
 
-class CharacterSheet extends Component {
-  constructor(props){
-    super(props);
+CharacterSheet {
 
   render() {
     return (
