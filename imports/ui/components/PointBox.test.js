@@ -14,12 +14,12 @@ describe('PointBox', function () {
 
   it('should show points', function () {
     render(15);
-    expect(component.text()).to.contain('15');
+    expect(component.html()).to.contain('15');
   });
 
   it('should have default points of 0', function () {
     render();
-    expect(component.text()).to.contain('0');
+    expect(component.html()).to.contain('0');
   });
 
   it('should have default data-id of "point-box"', function () {

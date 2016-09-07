@@ -167,31 +167,30 @@ describe('CharacterCreation', function () {
   describe('Spending Points', function () {
     context('when initializing', function () {
       before(function () {
-        render(Factory.create('character'));
+        render(Factory.create('character', { skills: {} }));
       });
 
       it('should set attribute points to 5', function () {
-        const actual = component.find('[data-id=attribute-point-box]').text();
-        expect(actual).to.contain('5');
+        const actual = component.find('[dataId="attribute-point-box"]').prop('points');
+        expect(actual).to.equal(5);
       });
 
       it('should set skill points to 15', function () {
-        const actual = component.find('[data-id=skill-point-box]').text();
-        expect(actual).to.contain('15');
+        const actual = component.find('[dataId="skill-point-box"]').prop('points');
+        expect(actual).to.equal(15);
       });
     });
 
     context('when adding a skill', function () {
       it('should remove one skill point', function () {
-        const character = Factory.create('character', { skills: { } });
+        const character = Factory.create('character', { skills: {} });
         render(character);
 
         const skillSelection = component.find(SkillSelection).first();
         skillSelection.prop('onChange')('climbing');
 
-        //const actual = component.find('[data-id=skill-point-box]').text();
-
-        //expect(component.state('skillPoints')).to.equal(14);
+        const actual = component.find('[dataId="skill-point-box"]').prop('points');
+        expect(actual).to.equal(14);
       });
     });
 
@@ -203,7 +202,8 @@ describe('CharacterCreation', function () {
         const skillSelection = component.find(SkillSelection).first();
         skillSelection.prop('onChange')('climbing');
 
-        expect(component.state('skillPoints')).to.equal(16);
+        const actual = component.find('[dataId="skill-point-box"]').prop('points');
+        expect(actual).to.equal(16);
       });
     });
 
@@ -219,7 +219,8 @@ describe('CharacterCreation', function () {
         const statList = component.find(StatList).first();
         statList.prop('onChange')(skill, 5);
 
-        expect(component.state('skillPoints')).to.equal(11);
+        const actual = component.find('[dataId="skill-point-box').prop('points');
+        expect(actual).to.equal(11);
       });
     });
 
@@ -235,7 +236,8 @@ describe('CharacterCreation', function () {
         const statList = component.find(StatList).first();
         statList.prop('onChange')(skill, 4);
 
-        expect(component.state('skillPoints')).to.equal(13);
+        const actual = component.find('[dataId="skill-point-box"]').prop('points');
+        expect(actual).to.equal(13);
       });
     });
   });

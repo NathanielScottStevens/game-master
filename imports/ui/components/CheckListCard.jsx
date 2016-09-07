@@ -12,6 +12,7 @@ class CheckListCard extends Component {
   renderItems() {
     return this.props.items.map(item =>
       <CheckBox
+        key={item.id}
         id={item.id}
         label={item.label}
         value={item.value}
