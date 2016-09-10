@@ -18,11 +18,20 @@ describe('CharacterCreation', function () {
   }
 
   describe('State', function () {
-    context('when initializing', function () {
+    beforeEach(function () {
       render(Factory.create('character'));
+    });
 
+    context('when initializing', function () {
       it('should set step to 0', function () {
         expect(component.state('step')).to.equal(0);
+      });
+    });
+
+    context('when next button is clicked', function () {
+      it('should move to the next step', function () {
+        component.find('[data-id="next-button"]').first().simulate('click');
+        expect(component.state('step')).to.equal(1);
       });
     });
   });
@@ -37,7 +46,7 @@ describe('CharacterCreation', function () {
 
   describe('Step 1 - Skill Selection', function () {
     let character;
-    const characterSkills = { presentSkill: 1 };
+    const characterSkills = { fighting: 1 };
     beforeEach(function () {
       character = Factory.create('character', { skills: characterSkills });
       render(character);
@@ -65,9 +74,9 @@ describe('CharacterCreation', function () {
       context('with a skill present', function () {
         it('should remove that skill', function () {
           const skillSelection = component.find(SkillSelection).first();
-          skillSelection.prop('onChange')('presentSkill');
+          skillSelection.simulate('change', 'fighting');
 
-          const actual = Characters.findOne(character._id).skills.presentSkill;
+          const actual = Characters.findOne(character._id).skills.fighting;
           expect(actual).to.not.exist;
         });
       });
@@ -75,9 +84,9 @@ describe('CharacterCreation', function () {
       context('with a skill not present', function () {
         it('should add that skill', function () {
           const skillSelection = component.find(SkillSelection).first();
-          skillSelection.prop('onChange')('notPresentSkill');
+          skillSelection.simulate('change', 'throwing');
 
-          const actual = Characters.findOne(character._id).skills.notPresentSkill;
+          const actual = Characters.findOne(character._id).skills.throwing;
           expect(actual).to.exist;
         });
       });
@@ -114,7 +123,7 @@ describe('CharacterCreation', function () {
 
       beforeEach(function () {
         const statList = component.find(StatList).first();
-        statList.prop('onChange')('strength', expected);
+        statList.simulate('change', 'strength', expected);
       });
 
       it('should update character attribute', function () {
@@ -154,7 +163,7 @@ describe('CharacterCreation', function () {
 
       beforeEach(function () {
         const statList = component.find(StatList).first();
-        statList.prop('onChange')('climbing', expected);
+        statList.simulate('change', 'climbing', expected);
       });
 
       it('should update character attribute', function () {

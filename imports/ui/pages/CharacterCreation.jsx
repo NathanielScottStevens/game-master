@@ -15,6 +15,7 @@ class CharacterCreation extends Component {
     this.onSkillSelectionChange = this.onSkillSelectionChange.bind(this);
     this.onAttributeChange = this.onAttributeChange.bind(this);
     this.onSkillChange = this.onSkillChange.bind(this);
+    this.onNext = this.onNext.bind(this);
   }
 
   onSkillSelectionChange(skill) {
@@ -27,6 +28,12 @@ class CharacterCreation extends Component {
 
   onSkillChange(skill, value) {
     Meteor.call('Characters.updateSkill', this.props.character._id, skill, value);
+  }
+
+  onNext() {
+    this.setState(function (state) {
+      return { step: state.step + 1 };
+    });
   }
 
   getSkillPoints() {
@@ -108,6 +115,7 @@ class CharacterCreation extends Component {
         <PointBox points={this.getSkillPoints()} dataId="skill-point-box" />
         <PointBox points={this.getAttributePoints()} dataId="attribute-point-box" />
         {this.renderStep()}
+        <button type="button" data-id="next-button" onClick={this.onNext}>Next</button>
       </div>
     );
   }
