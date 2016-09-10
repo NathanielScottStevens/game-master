@@ -33,19 +33,33 @@ class CharacterCreation extends Component {
     const max = 15;
     let current = max;
 
-    Object.keys(this.props.character.skills).forEach((cs) => {
-      const att = this.props.skills.find(s => s.name === cs).attribute;
-      const value = this.props.character.skills[cs];
-      const attLevel = this.props.character.attributes[att];
+    Object.keys(this.props.character.skills).forEach((charSkill) => {
+      const attribute = this.props.skills.find(s => s.name === charSkill).attribute;
+      const value = this.props.character.skills[charSkill];
+      const attributeLevel = this.props.character.attributes[attribute];
 
-      current -= value;
+      if (value > attributeLevel) {
+        current -= attributeLevel;
+        current -= 2 * (value - attributeLevel);
+      } else {
+        current -= value;
+      }
     }, this);
 
     return current;
   }
 
   getAttributePoints() {
-    return 5;
+    const max = 5;
+    let current = max;
+
+    Object.keys(this.props.character.attributes).forEach((attribute) => {
+      if (this.props.character.attributes[attribute] > 1) {
+        current -= this.props.character.attributes[attribute] - 1;
+      }
+    }, this);
+
+    return current;
   }
 
   renderStep() {
@@ -76,8 +90,9 @@ class CharacterCreation extends Component {
   }
 
   render() {
-    if (this.props.isLoading)
+    if (this.props.isLoading) {
       return (<p>Loading...</p>);
+    }
 
     return (
       <div>
