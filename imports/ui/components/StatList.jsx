@@ -16,7 +16,7 @@ class StatList extends Component {
           {
             (Object.keys(this.props.items).map(item =>
               <DieStatLine
-                label={item.toUpperCase()}
+                label={item}
                 field={item}
                 value={this.props.items[item]}
                 action={this.onChange}
