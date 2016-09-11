@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { withRouter } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import BreadCrumb from '../components/BreadCrumb.jsx';
 import SkillSelection from '../components/SkillSelection.jsx';
@@ -30,7 +30,7 @@ class CharacterCreation extends Component {
   }
 
   onNext() {
-    this.props.router.push({
+    browserHistory.push({
       pathname: `/charactercreation/${this.props.character._id}`,
       query: { step: this.props.step + 1 },
     });
@@ -112,10 +112,23 @@ class CharacterCreation extends Component {
           selected={this.props.step}
           onChange={() => {}}
         />
-        <PointBox points={this.getSkillPoints()} dataId="skill-point-box" />
-        <PointBox points={this.getAttributePoints()} dataId="attribute-point-box" />
+        <PointBox
+          points={this.getSkillPoints()}
+          label="Skills"
+          dataId="skill-point-box"
+        />
+        <PointBox
+          points={this.getAttributePoints()}
+          label="Attributes"
+          dataId="attribute-point-box"
+        />
         {this.renderStep()}
-        <button type="button" data-id="next-button" onClick={this.onNext}>Next</button>
+        <button
+          type="button"
+          data-id="next-button"
+          className="btn btn-primary btn-lg"
+          onClick={this.onNext}
+        >Next</button>
       </div>
     );
   }
@@ -129,4 +142,4 @@ CharacterCreation.propTypes = {
   router: PropTypes.object,
 };
 
-export default withRouter(CharacterCreation);
+export default CharacterCreation;

@@ -13,28 +13,15 @@ import { skills } from '../../api/skills/fixtures.js';
 describe('CharacterCreation', function () {
   let component;
 
-  function render(character) {
-    component = shallow(<CharacterCreation character={character} skills={skills} />);
+  function render(character, step = 0) {
+    component = shallow(<CharacterCreation
+      character={character}
+      skills={skills}
+      isLoading={false}
+      step={step}
+      router={{}}
+    />);
   }
-
-  describe('State', function () {
-    beforeEach(function () {
-      render(Factory.create('character'));
-    });
-
-    context('when initializing', function () {
-      it('should set step to 0', function () {
-        expect(component.state('step')).to.equal(0);
-      });
-    });
-
-    context('when next button is clicked', function () {
-      it('should move to the next step', function () {
-        component.find('[data-id="next-button"]').first().simulate('click');
-        expect(component.state('step')).to.equal(1);
-      });
-    });
-  });
 
   describe('Rendering', function () {
     render(Factory.create('character'));
@@ -49,7 +36,7 @@ describe('CharacterCreation', function () {
     const characterSkills = { fighting: 1 };
     beforeEach(function () {
       character = Factory.create('character', { skills: characterSkills });
-      render(character);
+      render(character, 0);
     });
 
     it('should show SkillSelection component', function () {
@@ -98,8 +85,7 @@ describe('CharacterCreation', function () {
 
     beforeEach(function () {
       character = Factory.create('character', { attributes: { strength: 1 } });
-      render(character);
-      component.setState({ step: 1 });
+      render(character, 1);
     });
 
     it('should show StatList component', function () {
@@ -138,8 +124,7 @@ describe('CharacterCreation', function () {
 
     beforeEach(function () {
       character = Factory.create('character', { skills: { climbing: 1 } });
-      render(character);
-      component.setState({ step: 2 });
+      render(character, 2);
     });
 
     it('should show StatList component', function () {

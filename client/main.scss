@@ -89,3 +89,36 @@
 /* Hover for completed and current */
 .arrow-breadcrumb li:hover {background-color: $btn-primary-bg}
 .arrow-breadcrumb li:hover::after {border-left-color: $btn-primary-bg}
+
+
+/* Point Box */
+.box {
+  border: thick solid $gray-light;
+  border-radius: 8px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1;
+  padding: 10px;
+}
+
+.point-box {
+  .label {
+    display: inline-block;
+    font-size: 2em;
+  }
+  .box {
+    font-size: 3em;
+    transition: background-color 2s;
+    background-color: white;
+    width: 2em;
+    height: 2em;
+  }
+  .warning {
+    background-color: lighten($brand-warning, 30%)
+  }
+  .danger {
+    background-color: lighten($brand-danger, 30%)
+  }
+
+}
