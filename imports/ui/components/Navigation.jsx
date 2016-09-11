@@ -7,13 +7,6 @@ export default function Navigation() {
       <div className="nav navbar-nav">
         <IndexLink to="/" className="nav-item nav-link" activeClassName="active">Index</IndexLink>
         <Link
-          to="/characters"
-          className="nav-item nav-link"
-          activeClassName="active"
-        >
-          Characters
-        </Link>
-        <Link
           to="/charactercreation"
           className="nav-item nav-link"
           activeClassName="active"

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { withRouter } from 'react-router';
 
 import BreadCrumb from '../components/BreadCrumb.jsx';
 import SkillSelection from '../components/SkillSelection.jsx';
@@ -9,8 +10,6 @@ import PointBox from '../components/PointBox.jsx';
 class CharacterCreation extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { step: 0 };
 
     this.onSkillSelectionChange = this.onSkillSelectionChange.bind(this);
     this.onAttributeChange = this.onAttributeChange.bind(this);
@@ -31,8 +30,9 @@ class CharacterCreation extends Component {
   }
 
   onNext() {
-    this.setState(function (state) {
-      return { step: state.step + 1 };
+    this.props.router.push({
+      pathname: `/charactercreation/${this.props.character._id}`,
+      query: { step: this.props.step + 1 },
     });
   }
 
@@ -70,7 +70,7 @@ class CharacterCreation extends Component {
   }
 
   renderStep() {
-    switch (this.state.step) {
+    switch (this.props.step) {
       default:
       case 0:
         return (
@@ -109,7 +109,7 @@ class CharacterCreation extends Component {
             'Attributes',
             'Point Skills',
           ]}
-          selected={this.state.step}
+          selected={this.props.step}
           onChange={() => {}}
         />
         <PointBox points={this.getSkillPoints()} dataId="skill-point-box" />
@@ -125,6 +125,8 @@ CharacterCreation.propTypes = {
   character: PropTypes.object,
   skills: PropTypes.array,
   isLoading: PropTypes.bool,
+  step: PropTypes.number,
+  router: PropTypes.object,
 };
 
-export default CharacterCreation;
+export default withRouter(CharacterCreation);
