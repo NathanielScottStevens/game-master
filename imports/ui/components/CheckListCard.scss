@@ -1,7 +1,16 @@
-.check-list-title {
-  background: $gray-lighter;
-}
-
 .check-list-card {
   margin: 10px;
+
+  .check-list-title {
+    background: $brand-secondary-dark;
+    color: $brand-secondary-lightest;
+    text-transform: uppercase;
+  }
+
+  .form-check {
+    background: $brand-secondary-lighter;
+    color: $brand-secondary-darker;
+    text-transform: capitalize;
+  }
+
 }

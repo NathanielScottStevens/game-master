@@ -1,4 +1,27 @@
+$brand-primary: #2E3B51;
+$brand-primary-dark: darken($brand-primary, 10%);
+$brand-primary-darker: darken($brand-primary, 15%);
+$brand-primary-light: lighten($brand-primary, 10%);
+$brand-primary-lighter: lighten($brand-primary, 40%);
+
+$brand-secondary: #7A7040;
+$brand-secondary-dark: darken($brand-secondary, 8%);
+$brand-secondary-darker: darken($brand-secondary, 30%);
+$brand-secondary-light: lighten($brand-secondary, 10%);
+$brand-secondary-lighter: lighten($brand-secondary, 40%);
+$brand-secondary-lightest: lighten($brand-secondary, 50%);
+
+$brand-accent: #7A5640;
+
+$body-bg: $brand-primary-darker;
+
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  color: $brand-primary-lighter;
+}
+
 
 @import "../imports/ui/components/DieStatLine.scss";
 @import "../imports/ui/components/CheckListCard.scss";

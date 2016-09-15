@@ -10,7 +10,7 @@ function PointBox({ points, label, dataId }) {
 
   return (
     <div data-id={dataId} className="point-box">
-      <div className="label">{label}</div>
+      <div className="point-box-label">{label}</div>
       <div className={boxClassName}>{points}</div>
     </div>);
 }

@@ -16,7 +16,7 @@ class CheckBox extends Component {
             onClick={this.onChange}
             checked={this.props.value}
           />
-          <div className="label">
+          <div className="check-box-text">
             {this.props.label}
           </div>
         </label>
