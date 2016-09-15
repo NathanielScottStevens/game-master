@@ -22,7 +22,7 @@ class DieStatLine extends Component {
   render() {
     return (
       <div>
-        <div className="container">
+        <div className="die-stat-line">
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">{this.props.label}</label>
             <div className="btn-group col-sm-10" role="group">
@@ -31,8 +31,8 @@ class DieStatLine extends Component {
                     (<button
                       htmlFor="button"
                       className={`col-sm-2 btn
-                        ${this.isActive(statLevel)
-                          ? ' stat-button-active'
+                        ${this.isCurrentlySelected(statLevel)
+                          ? ' active'
                           : ''}`}
                       onClick={this.onChange.bind(this, statLevel)}
                     >

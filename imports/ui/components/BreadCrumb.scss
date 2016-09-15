@@ -5,7 +5,6 @@
 }
 
 .arrow-breadcrumb a {
-    //color: $gray;
     text-decoration: none;
 }
 
@@ -16,8 +15,9 @@
     height: 50px; /* total height */
     list-style-type: none;
     padding: 10px 5px 5px 35px; /* padding around text, last should include arrow width */
-    border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+    border-right: 3px solid $body-bg; /* width: gap between arrows, color: background of document */
     position: relative;
+    color: $brand-primary-light;
 }
 
 /* remove extra padding on the first object since it doesn't have an arrow to the left */
@@ -31,7 +31,7 @@
     top:0;
     left:0;
     display: block;
-    border-left: 25px solid white; /* width: arrow width, color: background of document */
+    border-left: 25px solid $body-bg; /* width: arrow width, color: background of document */
     border-top: 25px solid transparent; /* width: half height */
     border-bottom: 25px solid transparent; /* width: half height */
     width: 0;
@@ -57,19 +57,23 @@
 /* Setup colors (both the background and the arrow) */
 
 /* Completed */
-.arrow-breadcrumb li { background-color: lighten($btn-primary-bg, 40%); }
-.arrow-breadcrumb li::after { border-left-color: lighten($btn-primary-bg, 40%); }
+.arrow-breadcrumb li { background-color: $brand-primary-lighter; }
+.arrow-breadcrumb li::after { border-left-color: $brand-primary-lighter; }
 
 /* Current */
 .arrow-breadcrumb li.active {
-  background-color: lighten($btn-primary-bg, 20%);
-  color: white !important; }
-.arrow-breadcrumb li.active::after { border-left-color: lighten($btn-primary-bg, 20%); }
+  background-color: $brand-primary-light;
+  color: $brand-secondary-lightest;
+}
+.arrow-breadcrumb li.active::after { border-left-color: $brand-primary-light; }
 
 /* Following */
-.arrow-breadcrumb li.active ~ li { background-color: $gray-lighter; }
-.arrow-breadcrumb li.active ~ li::after {	border-left-color: $gray-lighter; }
+.arrow-breadcrumb li.active ~ li {
+  background-color: $brand-secondary-lighter;
+  color: $brand-primary-lightest;
+}
+.arrow-breadcrumb li.active ~ li::after {	border-left-color: $brand-secondary-lighter; }
 
 /* Hover for completed and current */
-.arrow-breadcrumb li:hover {background-color: $btn-primary-bg}
-.arrow-breadcrumb li:hover::after {border-left-color: $btn-primary-bg}
+.arrow-breadcrumb li:hover {background-color: $brand-primary}
+.arrow-breadcrumb li:hover::after {border-left-color: $brand-primary}

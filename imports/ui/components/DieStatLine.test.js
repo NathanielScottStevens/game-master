@@ -53,18 +53,8 @@ describe('DieStatLine', function () {
       expect(buttons.d12.text()).to.contain('12');
     });
 
-    it('should assign .stat-button-active to button at value', function () {
-      expect(buttons.d8.hasClass('stat-button-active')).to.be.true;
-    });
-
-    it('should assign .stat-button-active to all buttons below value', function () {
-      expect(buttons.d4.hasClass('stat-button-active')).to.be.true;
-      expect(buttons.d6.hasClass('stat-button-active')).to.be.true;
-    });
-
-    it('should not assign .stat-button-active to all buttons above value', function () {
-      expect(buttons.d10.hasClass('stat-button-active')).to.be.false;
-      expect(buttons.d12.hasClass('stat-button-active')).to.be.false;
+    it('should assign .active to active button', function () {
+      expect(buttons.d8.hasClass('active')).to.be.true;
     });
   });
 

@@ -1,4 +1,14 @@
-.stat-button-active {
-  background-color: $btn-primary-bg;
-  color: $btn-primary-color;
+.die-stat-line {
+  .btn {
+    background-color: $brand-primary;
+    color: $brand-primary-lighter;
+  }
+  .active {
+    background-color: $brand-primary;
+    color: $brand-accent-lightest;
+  }
+  .active ~ .btn {
+    background-color: $brand-secondary-lighter;
+    color: $brand-primary-lighter;
+  }
 }

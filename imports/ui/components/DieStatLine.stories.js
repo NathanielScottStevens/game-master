@@ -3,11 +3,11 @@ import { storiesOf } from '@kadira/storybook';
 import DieStatLine from './DieStatLine.jsx';
 
 storiesOf('DieStatLine', module)
-  .add('stat level 0', () => (
+  .add('stat level 1', () => (
     <DieStatLine
       label="Strength"
       field="strength"
-      value={0}
+      value={1}
     />
   ))
   .add('stat level 3', () => (
