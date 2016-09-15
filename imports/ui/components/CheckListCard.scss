@@ -2,14 +2,14 @@
   margin: 10px;
 
   .check-list-title {
-    background: $brand-secondary-dark;
-    color: $brand-secondary-lightest;
+    background: $secondary-dark;
+    color: $secondary-lightest;
     text-transform: uppercase;
   }
 
   .form-check {
-    background: $brand-secondary-lighter;
-    color: $brand-secondary-darker;
+    background: $secondary-lighter;
+    color: $secondary-darker;
     text-transform: capitalize;
   }
 

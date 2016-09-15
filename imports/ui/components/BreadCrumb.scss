@@ -57,19 +57,19 @@
 /* Setup colors (both the background and the arrow) */
 
 /* Completed */
-.arrow-breadcrumb li { background-color: lighten($btn-primary-bg, 40%); }
-.arrow-breadcrumb li::after { border-left-color: lighten($btn-primary-bg, 40%); }
+.arrow-breadcrumb li { background-color: $primary-lighter; }
+.arrow-breadcrumb li::after { border-left-color: $primary-lighter; }
 
 /* Current */
 .arrow-breadcrumb li.active {
-  background-color: lighten($btn-primary-bg, 20%);
+  background-color: $primary;
   color: white !important; }
-.arrow-breadcrumb li.active::after { border-left-color: lighten($btn-primary-bg, 20%); }
+.arrow-breadcrumb li.active::after { border-left-color: $primary; }
 
 /* Following */
-.arrow-breadcrumb li.active ~ li { background-color: $gray-lighter; }
-.arrow-breadcrumb li.active ~ li::after {	border-left-color: $gray-lighter; }
+.arrow-breadcrumb li.active ~ li { background-color: $secondary-lighter; }
+.arrow-breadcrumb li.active ~ li::after {	border-left-color: $secondary-lighter; }
 
 /* Hover for completed and current */
-.arrow-breadcrumb li:hover {background-color: $btn-primary-bg}
-.arrow-breadcrumb li:hover::after {border-left-color: $btn-primary-bg}
+.arrow-breadcrumb li:hover {background-color: $primary}
+.arrow-breadcrumb li:hover::after {border-left-color: $primary}
