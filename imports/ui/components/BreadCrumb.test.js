@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { sinon } from 'meteor/practicalmeteor:sinon';
 import { expect } from 'meteor/practicalmeteor:chai';
-import { describe, it } from 'meteor/practicalmeteor:mocha';
+import { describe, it, beforeEach } from 'meteor/practicalmeteor:mocha';
 
 import BreadCrumb from './BreadCrumb.jsx';
 
@@ -14,6 +14,8 @@ describe('BreadCrumb', function () {
   let breadCrumb;
 
   function render() {
+    onChange.reset();
+
     breadCrumb = shallow(
       <BreadCrumb
         list={list}
@@ -24,7 +26,9 @@ describe('BreadCrumb', function () {
   }
 
   describe('Rendering', function () {
-    render();
+    beforeEach(function () {
+      render();
+    });
 
     it('show breadCrumb class', function () {
       expect(breadCrumb.find('.arrow-breadcrumb')).to.have.lengthOf(1);
@@ -42,6 +46,28 @@ describe('BreadCrumb', function () {
           expect(aTags.at(i).hasClass('active')).to.be.false;
         }
       }
+    });
+  });
+
+  describe('Actions', function () {
+    beforeEach(function () {
+      render();
+    });
+
+    it('should call onChange with index < selected', function () {
+      const index = 1;
+      breadCrumb.find('a').at(index).simulate('click');
+
+      expect(onChange.args[0][0]).to.deep.equal(index);
+    });
+
+    it('should not call onChange with index >= selected', function () {
+      const buttons = breadCrumb.find('a');
+
+      buttons.at(selected).simulate('click');
+      buttons.at(selected + 1).simulate('click');
+
+      expect(onChange.called).to.be.false;
     });
   });
 });

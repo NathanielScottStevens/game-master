@@ -5,7 +5,7 @@ class BreadCrumb extends Component {
   renderItems() {
     return this.props.list.map((item, index) =>
       <li key={index} className={index === this.props.selected ? 'active' : ''}>
-        <a onClick={this.props.onChange.bind(this, index)}>
+        <a onClick={index < this.props.selected ? this.props.onChange.bind(this, index) : ''}>
             {item}
         </a>
       </li>
