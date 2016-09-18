@@ -34,14 +34,14 @@ class SkillSelection extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <CheckListCard
               label="smarts"
               items={smartsItems}
               onChange={this.onChange}
             />
           </div>
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <CheckListCard
               label="agility"
               items={agilityItems}
@@ -50,14 +50,14 @@ class SkillSelection extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <CheckListCard
               label="spirit"
               items={spiritItems}
               onChange={this.onChange}
             />
           </div>
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <CheckListCard
               label="strength"
               items={strengthItems}

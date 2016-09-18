@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 class DieStatLine extends Component {
 
   onChange(statLevel) {
-    const newLevel = this.isCurrentlySelected(statLevel) ? 0 : statLevel;
+    const newLevel = this.isCurrentlySelected(statLevel) ? 1 : statLevel;
     this.props.onChange(this.props.field, newLevel);
   }
 
@@ -24,17 +24,18 @@ class DieStatLine extends Component {
       <div>
         <div className="die-stat-line">
           <div className="form-group row">
-            <label className="col-sm-2 col-form-label">{this.props.label}</label>
+            <div className="col-sm-2 col-form-label">{this.props.label}</div>
             <div className="btn-group col-sm-10" role="group">
                 {
                   ([1, 2, 3, 4, 5].map(statLevel =>
                     (<button
                       htmlFor="button"
+                      key={`${this.props.label}-${statLevel}`}
                       className={`col-sm-2 btn
                         ${this.isCurrentlySelected(statLevel)
                           ? ' active'
                           : ''}`}
-                      onClick={this.onChange.bind(this, statLevel)}
+                      onClick={() => { this.onChange(statLevel); }}
                     >
                       {this.convertToDie(statLevel)}
                     </button>)
@@ -48,7 +49,7 @@ class DieStatLine extends Component {
   }
 }
 
-DieStatLine.PropTypes = {
+DieStatLine.propTypes = {
   label: PropTypes.string,
   field: PropTypes.string,
   value: PropTypes.number,

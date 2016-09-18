@@ -23,11 +23,6 @@ describe('PointBox', function () {
     expect(component.html()).to.contain('0');
   });
 
-  it('should show label', function () {
-    render();
-    expect(component.html()).to.contain(label);
-  });
-
   it('should have default data-id of "point-box"', function () {
     render();
     expect(component.is('[data-id="point-box"]')).to.be.true;

@@ -1,24 +1,12 @@
-.box {
-  border: thick solid $gray-light;
-  border-radius: 8px;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 1;
-  padding: 10px;
-}
-
 .point-box {
-  .point-box-label {
-    display: inline-block;
-    font-size: 2em;
-  }
   .box {
+    color: $brand-accent-dark;
+    border-color: $brand-accent-light;
     font-size: 3em;
     transition: background-color 2s;
-    background-color: white;
-    width: 2em;
-    height: 2em;
+    background-color: $brand-secondary-lightest;
+    width: 85px;
+    height: 85px;
   }
   .warning {
     background-color: lighten($brand-warning, 30%)

@@ -14,7 +14,6 @@ class CharacterCreation extends Component {
     this.onSkillSelectionChange = this.onSkillSelectionChange.bind(this);
     this.onAttributeChange = this.onAttributeChange.bind(this);
     this.onSkillChange = this.onSkillChange.bind(this);
-    this.onNext = this.onNext.bind(this);
   }
 
   onSkillSelectionChange(skill) {
@@ -29,10 +28,10 @@ class CharacterCreation extends Component {
     Meteor.call('Characters.updateSkill', this.props.character._id, skill, value);
   }
 
-  onNext() {
+  onStepChange(step) {
     browserHistory.push({
       pathname: `/charactercreation/${this.props.character._id}`,
-      query: { step: this.props.step + 1 },
+      query: { step },
     });
   }
 
@@ -67,6 +66,40 @@ class CharacterCreation extends Component {
     }, this);
 
     return current;
+  }
+
+  renderPointBoxes() {
+    return (
+      <div className="box container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <div className="text-xs-left h2 m-b-0">Skill</div>
+            <div className="pull-md-left">
+              <PointBox
+                points={this.getSkillPoints()}
+                dataId="skill-point-box"
+              />
+            </div>
+          </div>
+
+          <div className="col-md-6">
+            <p>Jack of all trades, master of none</p>
+            <p>Try to select skills within one group</p>
+          </div>
+
+          <div className="col-md-3">
+
+            <div className="pull-md-right">
+              <PointBox
+                points={this.getAttributePoints()}
+                dataId="attribute-point-box"
+              />
+            </div>
+            <div className="pull-md-right h2 m-b-0">Attribute</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   renderStep() {
@@ -110,24 +143,15 @@ class CharacterCreation extends Component {
             'Point Skills',
           ]}
           selected={this.props.step}
-          onChange={() => {}}
+          onChange={(step) => { this.onStepChange(step); }}
         />
-        <PointBox
-          points={this.getSkillPoints()}
-          label="Skills"
-          dataId="skill-point-box"
-        />
-        <PointBox
-          points={this.getAttributePoints()}
-          label="Attributes"
-          dataId="attribute-point-box"
-        />
+        {this.renderPointBoxes()}
         {this.renderStep()}
         <button
           type="button"
           data-id="next-button"
           className="btn btn-primary btn-lg"
-          onClick={this.onNext}
+          onClick={() => { this.onStepChange(this.props.step + 1); }}
         >Next</button>
       </div>
     );

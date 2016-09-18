@@ -12,7 +12,7 @@ $brand-secondary-light: lighten($brand-secondary, 10%);
 $brand-secondary-lighter: lighten($brand-secondary, 40%);
 $brand-secondary-lightest: lighten($brand-secondary, 50%);
 
-$brand-accent: #7A5640;
+$brand-accent: #548c9a;
 $brand-accent-dark: darken($brand-accent, 8%);
 $brand-accent-darker: darken($brand-accent, 30%);
 $brand-accent-light: lighten($brand-accent, 10%);
@@ -20,6 +20,15 @@ $brand-accent-lighter: lighten($brand-accent, 45%);
 $brand-accent-lightest: lighten($brand-accent, 50%);
 
 $body-bg: $brand-primary-darker;
+
+.box {
+  border: thick solid;
+  border-radius: 8px;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1;
+  padding: 10px;
+}
 
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

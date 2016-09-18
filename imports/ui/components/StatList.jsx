@@ -19,7 +19,7 @@ class StatList extends Component {
                 label={item}
                 field={item}
                 value={this.props.items[item]}
-                action={this.onChange}
+                onChange={this.onChange}
                 key={item}
               />
             ))

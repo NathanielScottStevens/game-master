@@ -42,7 +42,7 @@ describe('DieStatLine', function () {
     });
 
     it('should show the label', function () {
-      expect(dieStatLine.find('label').text()).to.contain('Strength');
+      expect(dieStatLine.html()).to.contain('Strength');
     });
 
     it('should show die values on buttons', function () {
@@ -79,8 +79,8 @@ describe('DieStatLine', function () {
         buttons.d8.simulate('click');
       });
 
-      it('should call action with value of 0', function () {
-        expect(onChange).to.be.calledWith(field, 0);
+      it('should call action with value of 1', function () {
+        expect(onChange).to.be.calledWith(field, 1);
       });
     });
   });

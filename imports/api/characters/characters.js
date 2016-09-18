@@ -3,23 +3,7 @@ import { Mongo } from 'meteor/mongo';
 export const Characters = new Mongo.Collection('Characters');
 
 Characters.helpers({
-  // This doesn't work. Helpers are at the document level, not the collection level
-  create() {
-    const newCharacter = {
-      attributes: {
-        strength: 1,
-        agility: 1,
-        smarts: 1,
-        spirit: 1,
-        vigor: 1,
-      },
-      skills: {},
-    };
-
-    Characters.insert(newCharacter);
-
-    return newCharacter;
-  },
+  // Helpers are at the document level.
 });
 
 Factory.define('character', Characters, {
