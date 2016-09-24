@@ -1,13 +1,13 @@
 .check-list-card {
   margin: 10px;
 
-  .check-list-title {
+  &__title {
     background: $brand-secondary-dark;
     color: $brand-secondary-lightest;
     text-transform: uppercase;
   }
 
-  .form-check {
+  &__check-box {
     background: $brand-secondary-lighter;
     color: $brand-secondary-darker;
     text-transform: capitalize;

@@ -1,17 +1,14 @@
 .point-box {
-  .box {
-    color: $brand-accent-dark;
-    border-color: $brand-accent-light;
-    font-size: 3em;
-    transition: background-color 2s;
-    background-color: $brand-secondary-lightest;
-    width: 85px;
-    height: 85px;
-  }
-  .warning {
+  @include box($brand-accent-light, 85px, 85px);
+  color: $brand-accent-dark;
+  font-size: 3em;
+  background-color: $brand-secondary-lightest;
+
+  &--warning {
     background-color: lighten($brand-warning, 30%)
   }
-  .danger {
+
+  &--danger {
     background-color: lighten($brand-danger, 30%)
   }
 }

@@ -16,6 +16,7 @@ class CheckListCard extends Component {
         id={item.id}
         label={item.label}
         value={item.value}
+        parentClass="check-list-card__check-box"
         onChange={this.onChange}
       />
     );
@@ -25,7 +26,7 @@ class CheckListCard extends Component {
     return (
       <div className="check-list-card">
         <div className="list-group">
-          <h4 className="list-group-item check-list-title">
+          <h4 className="list-group-item check-list-card__title">
             {this.props.label}
           </h4>
           {this.renderItems()}

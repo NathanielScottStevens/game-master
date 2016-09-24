@@ -9,6 +9,7 @@ import CheckBox from './CheckBox.jsx';
 let checkBox;
 const id = 'id1';
 const onChange = sinon.spy();
+const parentClass = 'test-class';
 
 function render(label, value) {
   checkBox = shallow(
@@ -17,6 +18,7 @@ function render(label, value) {
       label={label}
       value={value}
       onChange={onChange}
+      parentClass={parentClass}
     />
   );
 }
@@ -26,6 +28,11 @@ describe('CheckBox', function () {
     it('should display a label', function () {
       render('Fighting');
       expect(checkBox.find('label').text()).to.contain('Fighting');
+    });
+
+    it('should add class', function () {
+      render('Fighting');
+      expect(checkBox.hasClass(parentClass)).to.be.true;
     });
 
     context('When initialValue is true', function () {

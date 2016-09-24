@@ -21,13 +21,17 @@ $brand-accent-lightest: lighten($brand-accent, 50%);
 
 $body-bg: $brand-primary-darker;
 
-.box {
+@mixin box ($border-color, $height, $width) {
   border: thick solid;
   border-radius: 8px;
+  border-color: $border-color;
+  height: $height;
+  width: $width;
   vertical-align: middle;
   text-align: center;
   line-height: 1;
   padding: 10px;
+  transition: background-color 2s;
 }
 
 

@@ -1,14 +1,18 @@
 .die-stat-line {
-  .btn {
-    background-color: $brand-primary;
-    color: $brand-primary-lighter;
-  }
-  .active {
-    background-color: $brand-primary;
-    color: $brand-accent-lightest;
-  }
-  .active ~ .btn {
-    background-color: $brand-secondary-lighter;
-    color: $brand-primary-lighter;
+  &__btn {
+    &--before-active {
+      background-color: $brand-primary;
+      color: $brand-primary-lighter;
+    }
+
+    &--active {
+      background-color: $brand-primary;
+      color: $brand-accent-lightest;
+    }
+
+    &--after-active {
+      background-color: $brand-secondary-lighter;
+      color: $brand-primary-lighter;
+    }
   }
 }

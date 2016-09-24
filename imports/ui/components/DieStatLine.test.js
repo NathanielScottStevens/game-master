@@ -53,8 +53,18 @@ describe('DieStatLine', function () {
       expect(buttons.d12.text()).to.contain('12');
     });
 
-    it('should assign .active to active button', function () {
-      expect(buttons.d8.hasClass('active')).to.be.true;
+    it('should assign correct class to buttons before active buttons', function () {
+      expect(buttons.d4.prop('className')).to.contain('die-stat-line__btn--before-active');
+      expect(buttons.d6.prop('className')).to.contain('die-stat-line__btn--before-active');
+    });
+
+    it('should assign correct class to active button', function () {
+      expect(buttons.d8.prop('className')).to.contain('die-stat-line__btn--active');
+    });
+
+    it('should assign correct class to buttons after active buttons', function () {
+      expect(buttons.d10.prop('className')).to.contain('die-stat-line__btn--after-active');
+      expect(buttons.d12.prop('className')).to.contain('die-stat-line__btn--after-active');
     });
   });
 

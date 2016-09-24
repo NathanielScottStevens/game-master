@@ -7,16 +7,22 @@ class DieStatLine extends Component {
     this.props.onChange(this.props.field, newLevel);
   }
 
-  isCurrentlySelected(statLevel) {
-    return statLevel === this.props.value;
-  }
+  getClass(statLevel) {
+    if (statLevel < this.props.value) {
+      return 'die-stat-line__btn--before-active';
+    } else if (statLevel === this.props.value) {
+      return 'die-stat-line__btn--active';
+    }
 
-  isActive(statLevel) {
-    return statLevel <= this.props.value;
+    return 'die-stat-line__btn--after-active';
   }
 
   convertToDie(statLevel) {
     return 2 + (2 * statLevel);
+  }
+
+  isCurrentlySelected(statLevel) {
+    return statLevel === this.props.value;
   }
 
   render() {
@@ -31,10 +37,7 @@ class DieStatLine extends Component {
                     (<button
                       htmlFor="button"
                       key={`${this.props.label}-${statLevel}`}
-                      className={`col-sm-2 btn
-                        ${this.isCurrentlySelected(statLevel)
-                          ? ' active'
-                          : ''}`}
+                      className={`col-sm-2 btn ${this.getClass(statLevel)}`}
                       onClick={() => { this.onChange(statLevel); }}
                     >
                       {this.convertToDie(statLevel)}

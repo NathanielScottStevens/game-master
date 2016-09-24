@@ -1,16 +1,17 @@
 import React, { PropTypes } from 'react';
 
 function PointBox({ points, dataId }) {
-  let boxClassName = 'box';
+  let classModifier;
+
   if (points < 0) {
-    boxClassName += ' danger';
+    classModifier = 'point-box--danger';
   } else if (points < 5) {
-    boxClassName += ' warning';
+    classModifier = 'point-box--warning';
   }
 
   return (
-    <div data-id={dataId} className="point-box">
-      <div className={boxClassName}>{points}</div>
+    <div data-id={dataId} className={`point-box ${classModifier}`}>
+      <div>{points}</div>
     </div>);
 }
 

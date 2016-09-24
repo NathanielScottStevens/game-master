@@ -8,7 +8,10 @@ class CheckBox extends Component {
 
   render() {
     return (
-      <div className="form-check list-group-item check-box" key={this.props.id}>
+      <div
+        className={`form-check list-group-item check-box ${this.props.parentClass}`}
+        key={this.props.id}
+      >
         <label className="form-check-label">
           <input
             className="form-check-input"
@@ -16,7 +19,7 @@ class CheckBox extends Component {
             onClick={this.onChange}
             checked={this.props.value}
           />
-          <div className="check-box-text">
+          <div className="check-box__text">
             {this.props.label}
           </div>
         </label>
@@ -30,6 +33,7 @@ CheckBox.propTypes = {
   label: PropTypes.string,
   value: PropTypes.bool,
   onChange: PropTypes.func,
+  parentClass: PropTypes.string,
 };
 
 export default CheckBox;
