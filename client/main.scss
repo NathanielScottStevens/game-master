@@ -1,29 +1,33 @@
-$primary: #2E3B51;
-$primary-dark: darken($primary, 10%);
-$primary-darker: darken($primary, 15%);
-$primary-light: lighten($primary, 10%);
-$primary-lighter: lighten($primary, 40%);
-
-$secondary: #7A7040;
-$secondary-dark: darken($secondary, 8%);
-$secondary-darker: darken($secondary, 30%);
-$secondary-light: lighten($secondary, 10%);
-$secondary-lighter: lighten($secondary, 40%);
-$secondary-lightest: lighten($secondary, 50%);
-
-$accent: #7A5640;
-
-$body-bg: $primary-darker;
-
+// $primary: #2E3B51;
+// $primary-dark: darken($primary, 10%);
+// $primary-darker: darken($primary, 15%);
+// $primary-light: lighten($primary, 10%);
+// $primary-lighter: lighten($primary, 40%);
+//
+// $secondary: #7A7040;
+// $secondary-dark: darken($secondary, 8%);
+// $secondary-darker: darken($secondary, 30%);
+// $secondary-light: lighten($secondary, 10%);
+// $secondary-lighter: lighten($secondary, 40%);
+// $secondary-lightest: lighten($secondary, 50%);
+//
+// $accent: #7A5640;
+//
+// $body-bg: $primary-darker;
+//
+//
+// body {
+//   background-color: $body-bg;
+//   color: $primary-lighter;
+// }
+//
+//
+// @import "../imports/ui/components/DieStatLine.scss";
+// @import "../imports/ui/components/CheckListCard.scss";
+// @import "../imports/ui/components/BreadCrumb.scss";
+// @import "../imports/ui/components/PointBox.scss";
+// @import "../imports/ui/components/CheckBox.scss";
 
 body {
-  background-color: $body-bg;
-  color: $primary-lighter;
+  margin: 0;
 }
-
-
-@import "../imports/ui/components/DieStatLine.scss";
-@import "../imports/ui/components/CheckListCard.scss";
-@import "../imports/ui/components/BreadCrumb.scss";
-@import "../imports/ui/components/PointBox.scss";
-@import "../imports/ui/components/CheckBox.scss";

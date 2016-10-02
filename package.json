@@ -8,11 +8,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "material-ui": "^0.15.4",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.1",
     "react-addons-pure-render-mixin": "^15.3.0",
     "react-dom": "^15.3.0",
-    "react-router": "^2.6.1"
+    "react-router": "^2.6.1",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.0.0",
@@ -51,10 +53,21 @@
       "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off",
       "prefer-arrow-callback": "off",
-      "react/jsx-filename-extension": [1, { "extensions": ["stories.js", "test.js", ".jsx"] }],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            "stories.js",
+            "test.js",
+            ".jsx"
+          ]
+        }
+      ],
       "func-names": "off",
       "no-unused-expressions": "off",
-      "no-underscore-dangle": "off"
+      "no-underscore-dangle": "off",
+      "react/require-extension": "off",
+      "linebreak-style": "off"
     },
     "globals": {
       "Meteor": false,

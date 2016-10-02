@@ -1,17 +1,10 @@
 import React, { PropTypes } from 'react';
-
-import Navigation from '../components/Navigation.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const App = ({ children }) => (
-  <div>
-    <header>
-      <h1>Game Master</h1>
-      <Navigation />
-    </header>
-    <main>
-      { children }
-    </main>
-  </div>
+  <MuiThemeProvider>
+    { children }
+  </MuiThemeProvider>
 );
 
 App.propTypes = {
